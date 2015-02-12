@@ -31,7 +31,7 @@ window.onload = function()
 	
 	var cursors;
 	
-	var ball;
+	var balls;
 
 function create() {
 
@@ -42,8 +42,20 @@ function create() {
     //  This creates a simple sprite that is using our loaded image and
     //  displays it on-screen
     //  and assign it to a variable
-    ball = game.add.sprite(400, 200, 'ball');
+    balls = game.add.group();//game.add.sprite(400, 200, 'ball');
+	//add multiple balls
+	//sprites = game.add.group();
 
+	for (var i = 0; i < 30; i++)
+	{
+		var s = balls.create(game.rnd.integerInRange(100, 700), game.rnd.integerInRange(32, 200), 'ball');
+		//s.animations.add('spin', [0,1,2,3]);
+		//s.play('spin', 10, true);
+		game.physics.enable(s, Phaser.Physics.ARCADE);
+		s.body.velocity.x = game.rnd.integerInRange(-200, 200);
+		s.body.velocity.y = game.rnd.integerInRange(-200, 200);
+	}
+	
     knocker = game.add.sprite(400, 200, 'dude');
 
     game.physics.enable([knocker,ball], Phaser.Physics.ARCADE);
@@ -51,23 +63,29 @@ function create() {
     knocker.body.immovable = true;
 
     //  This gets it moving
-    ball.body.velocity.setTo(200, 200);
+    //ball.body.velocity.setTo(200, 200);
+	balls.setAll('body.collideWorldBounds', true);
+	balls.setAll('body.bounce.x', 1);
+	balls.setAll('body.bounce.y', 1);
+	//balls.setAll('body.minBounceVelocity', 0);
 
     //  This makes the game world bounce-able
-    ball.body.collideWorldBounds = true;
+    //ball.body.collideWorldBounds = true;
 
     //  This sets the image bounce energy for the horizontal 
     //  and vertical vectors (as an x,y point). "1" is 100% energy return
-    ball.body.bounce.setTo(1, 1);
-
-
+    //ball.body.bounce.setTo(1, 1);
+	
+	//add
 }
 
 //  Move the knocker with the arrow keys
 function update () {
 
     //  Enable physics between the knocker and the ball
-    game.physics.arcade.collide(knocker, ball);
+    game.physics.arcade.collide(knocker, balls);
+	// Enable physics between balls
+	//game.physics.arcade.collide(balls);
 
     if (cursors.up.isDown)
     {
