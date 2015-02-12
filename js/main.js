@@ -96,10 +96,10 @@ window.onload = function()
 	function update () {
 
     //  Enable physics between the knocker and the ball
-		
+		//game.physics.arcade.collide(knocker, balls);
 	
 	//score keeper
-		game.physics.arcade.overlap(knocker, balls, collisionHandler, null, this);
+		game.physics.arcade.collide(knocker, balls, collisionHandler, null, this);
 	// Enable physics between balls
 		game.physics.arcade.collide(balls);
 
@@ -125,10 +125,22 @@ window.onload = function()
 		}
     
 	}
-	function collisionHandler (bullet, alien) {
-		game.physics.arcade.collide(knocker, balls);
+		function collisionHandler (bullet, alien) {
+
+    //  When a bullet hits an alien we kill them both
+    //bullet.kill();
+    //alien.kill();
+
+    //  Increase the score
 		score += 20;
 		scoreText.text = scoreString + score;
+		
+
+    //  And create an explosion :)
+    //var explosion = explosions.getFirstExists(false);
+	//explosion.reset(alien.body.x, alien.body.y);
+    //explosion.play('kaboom', 30, false, true);
+
 		if (score == 1000)
 		{
 			scoreText.text = scoreString + score;
@@ -137,6 +149,8 @@ window.onload = function()
 			stateText.text = " You Won, \n Click to restart";
 			stateText.visible = true;
 
+        //the "click to restart" handler
+        //game.input.onTap.addOnce(restart,this);
 		}
 
 	}
