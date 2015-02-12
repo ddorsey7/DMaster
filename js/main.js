@@ -26,6 +26,12 @@ window.onload = function()
     var bouncy;
     
     var image;
+	
+	var knocker;
+	
+	var cursors;
+	
+	var ball;
 
 function create() {
 
