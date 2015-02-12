@@ -138,7 +138,7 @@ window.onload = function()
 		time = Math.floor(game.time.time / 1000) % 60;
 		timeText.text= "time: "+time + "/60";
 		
-		if((time == 59)&&(score>0))
+		if(time == 59)
 		{
 			stateText.text = "You Survived";
 			stateText.visible = true;
