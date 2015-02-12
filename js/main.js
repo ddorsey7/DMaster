@@ -61,6 +61,7 @@ function create() {
     game.physics.enable([knocker,balls], Phaser.Physics.ARCADE);
 
     knocker.body.immovable = true;
+	knocker.body.collideWorldBounds = true;
 
     //  This gets it moving
     //ball.body.velocity.setTo(200, 200);
