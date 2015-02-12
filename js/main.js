@@ -68,7 +68,7 @@ window.onload = function()
 			s.body.velocity.y = game.rnd.integerInRange(-200, 200);
 		}
 	
-		knocker = game.add.sprite(400, 800, 'dude');
+		knocker = game.add.sprite(1000, 1000, 'dude');
 
 		game.physics.enable([knocker,balls], Phaser.Physics.ARCADE);
 
