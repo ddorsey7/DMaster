@@ -57,7 +57,7 @@ window.onload = function()
 		scoreString = 'Score : ';
 		scoreText = game.add.text(10, 10, scoreString + score, { font: '34px Arial', fill: '#fff' });
 		//Timer
-		timeText = game.add.text(1500, 10, timeString + time, { font: '34px Arial', fill: '#fff' });
+		timeText = game.add.text(1400, 10, timeString + time, { font: '34px Arial', fill: '#fff' });
 		//  Text
 		stateText = game.add.text(game.world.centerX,game.world.centerY,' ', { font: '84px Arial', fill: '#fff' });
 		stateText.anchor.setTo(0.5, 0.5);
@@ -89,8 +89,7 @@ window.onload = function()
 	//Move the knocker with the arrow keys
 	function update () {
 		//time
-		time -=1;
-		scoreText.text = scoreString + score;
+		updateTime();
 		//score keeper
 		game.physics.arcade.collide(knocker, balls, collisionHandler, null, this);
 		// Enable physics between balls
