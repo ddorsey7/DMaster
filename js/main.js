@@ -55,7 +55,7 @@ window.onload = function()
 		//text
 		// The score
 		score=10000;
-		scoreString = 'Score : ';
+		scoreString = 'Life : ';
 		scoreText = game.add.text(10, 10, scoreString + score, { font: '34px Arial', fill: '#fff' });
 		//Timer
 		time=0;
@@ -64,6 +64,7 @@ window.onload = function()
 		stateText = game.add.text(game.world.centerX,game.world.centerY,' ', { font: '84px Arial', fill: '#fff' });
 		stateText.anchor.setTo(0.5, 0.5);
 		stateText.visible = false;
+		
 
 		for (var i = 0; i < 10; i++)
 		{
@@ -121,14 +122,15 @@ window.onload = function()
 	
 	function collisionHandler (bullet, alien) 
 	{
+		if(score!=0)
+			score -= 20;
 		
-		score -= 20;
 		scoreText.text = scoreString + score;
 		
 		if (score == 0)
 		{
 			scoreText.text = scoreString + score;
-			stateText.text = " You Won, \n Click to restart";
+			stateText.text = " You Died!";
 			stateText.visible = true;
 		}
 	}
