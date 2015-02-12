@@ -65,7 +65,7 @@ window.onload = function()
 		stateText.anchor.setTo(0.5, 0.5);
 		stateText.visible = false;
 
-		for (var i = 0; i < 30; i++)
+		for (var i = 0; i < 10; i++)
 		{
 			var s = balls.create(game.rnd.integerInRange(100, 700), game.rnd.integerInRange(32, 200), 'ball');
 		
