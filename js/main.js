@@ -85,7 +85,7 @@ function update () {
     //  Enable physics between the knocker and the ball
     game.physics.arcade.collide(knocker, balls);
 	// Enable physics between balls
-	//game.physics.arcade.collide(balls);
+	game.physics.arcade.collide(balls);
 
     if (cursors.up.isDown)
     {
