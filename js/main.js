@@ -34,6 +34,10 @@ window.onload = function()
 	var scoreString = '';
 	var scoreText;
 	var stateText;
+	
+	var time=0;
+	var timeString="Time: ";
+	var timeText;
 
 	function create() {
 
@@ -41,19 +45,20 @@ window.onload = function()
 
 		cursors = game.input.keyboard.createCursorKeys();
     
-    //  This creates a simple sprite that is using our loaded image and
-    //  displays it on-screen
-    //  and assign it to a variable
+		//  This creates a simple sprite that is using our loaded image and
+		//  displays it on-screen
+		//  and assign it to a variable
 		balls = game.add.group();//game.add.sprite(400, 200, 'ball');
-	//add multiple balls
-	//sprites = game.add.group();
+		//add multiple balls
+		//sprites = game.add.group();
 	
-	//text
-	//  The score
+		//text
+		// The score
 		scoreString = 'Score : ';
 		scoreText = game.add.text(10, 10, scoreString + score, { font: '34px Arial', fill: '#fff' });
-
-    //  Text
+		//Timer
+		timeText = game.add.text(1500, 10, timeString + time, { font: '34px Arial', fill: '#fff' });
+		//  Text
 		stateText = game.add.text(game.world.centerX,game.world.centerY,' ', { font: '84px Arial', fill: '#fff' });
 		stateText.anchor.setTo(0.5, 0.5);
 		stateText.visible = false;
@@ -61,8 +66,7 @@ window.onload = function()
 		for (var i = 0; i < 30; i++)
 		{
 			var s = balls.create(game.rnd.integerInRange(100, 700), game.rnd.integerInRange(32, 200), 'ball');
-		//s.animations.add('spin', [0,1,2,3]);
-		//s.play('spin', 10, true);
+		
 			game.physics.enable(s, Phaser.Physics.ARCADE);
 			s.body.velocity.x = game.rnd.integerInRange(-200, 200);
 			s.body.velocity.y = game.rnd.integerInRange(-200, 200);
@@ -75,32 +79,21 @@ window.onload = function()
 		knocker.body.immovable = true;
 		knocker.body.collideWorldBounds = true;
 
-    //  This gets it moving
-    //ball.body.velocity.setTo(200, 200);
+		//This gets it moving
 		balls.setAll('body.collideWorldBounds', true);
 		balls.setAll('body.bounce.x', 1);
 		balls.setAll('body.bounce.y', 1);
 		balls.setAll('body.minBounceVelocity', 0);
-
-    //  This makes the game world bounce-able
-    //ball.body.collideWorldBounds = true;
-
-    //  This sets the image bounce energy for the horizontal 
-    //  and vertical vectors (as an x,y point). "1" is 100% energy return
-    //ball.body.bounce.setTo(1, 1);
-	
-	//add
 	}
 
-//  Move the knocker with the arrow keys
+	//Move the knocker with the arrow keys
 	function update () {
-
-    //  Enable physics between the knocker and the ball
-		//game.physics.arcade.collide(knocker, balls);
-	
-	//score keeper
+		//time
+		time -=1;
+		scoreText.text = scoreString + score;
+		//score keeper
 		game.physics.arcade.collide(knocker, balls, collisionHandler, null, this);
-	// Enable physics between balls
+		// Enable physics between balls
 		game.physics.arcade.collide(balls);
 
 		if (cursors.up.isDown)
@@ -123,41 +116,32 @@ window.onload = function()
 		{
 			knocker.body.velocity.setTo(0, 0);
 		}
-    
 	}
-		function collisionHandler (bullet, alien) {
-
-    //  When a bullet hits an alien we kill them both
-    //bullet.kill();
-    //alien.kill();
-
-    //  Increase the score
+	
+	function collisionHandler (bullet, alien) 
+	{
+		
 		score += 20;
 		scoreText.text = scoreString + score;
 		
-
-    //  And create an explosion :)
-    //var explosion = explosions.getFirstExists(false);
-	//explosion.reset(alien.body.x, alien.body.y);
-    //explosion.play('kaboom', 30, false, true);
-
 		if (score == 1000)
 		{
 			scoreText.text = scoreString + score;
-
-        //enemyBullets.callAll('kill',this);
 			stateText.text = " You Won, \n Click to restart";
 			stateText.visible = true;
-
-        //the "click to restart" handler
-        //game.input.onTap.addOnce(restart,this);
 		}
-
 	}
-/*function render () {
-
-    //debug helper
-    game.debug.spriteInfo(balls, 32, 32);
-
-}*/
+	
+	function updateTime()
+	{
+		time -= Math.floor(game.time.time / 1000) % 60;
+		timeText.text= timeString + time;
+		
+		if((time == 0)&&(score<1000))
+		{
+			stateText.text = "You Survived";
+			stateText.visible = true;
+		}
+		
+	}
 };
