@@ -30,12 +30,12 @@ window.onload = function()
 	var cursors;
 	var balls;
 	
-	var score=0;
+	var score;
 	var scoreString = '';
 	var scoreText;
 	var stateText;
 	
-	var time=0;
+	var time;
 	var timeString="Time: ";
 	var timeText;
 
@@ -54,9 +54,11 @@ window.onload = function()
 	
 		//text
 		// The score
+		score=0;
 		scoreString = 'Score : ';
 		scoreText = game.add.text(10, 10, scoreString + score, { font: '34px Arial', fill: '#fff' });
 		//Timer
+		time=0;
 		timeText = game.add.text(1400, 10, timeString + time, { font: '34px Arial', fill: '#fff' });
 		//  Text
 		stateText = game.add.text(game.world.centerX,game.world.centerY,' ', { font: '84px Arial', fill: '#fff' });
