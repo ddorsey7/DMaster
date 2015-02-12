@@ -136,7 +136,7 @@ window.onload = function()
 	function updateTime()
 	{
 		time = Math.floor(game.time.time / 1000) % 60;
-		timeText.text= "time: "timeString + "/60";
+		timeText.text= "time: "+timeString + "/60";
 		
 		if((time == 60)&&(score>0))
 		{
