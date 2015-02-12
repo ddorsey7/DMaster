@@ -71,7 +71,7 @@ window.onload = function()
 		stateText.visible = false;
 		
 
-		for (var i = 0; i < 5; i++)
+		for (var i = 0; i < 3; i++)
 		{
 			var s = balls.create(game.rnd.integerInRange(100, 700), game.rnd.integerInRange(32, 200), 'ball');
 		
