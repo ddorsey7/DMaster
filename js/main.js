@@ -113,7 +113,7 @@ function update () {
 function render () {
 
     //debug helper
-    game.debug.spriteInfo(ball, 32, 32);
+    game.debug.spriteInfo(balls, 32, 32);
 
 }
 };
