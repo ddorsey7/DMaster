@@ -15,7 +15,7 @@ window.onload = function()
     "use strict";
     
     //var game = new Phaser.Game( 800, 600, Phaser.AUTO, 'game', { preload: preload, create: create, update: update } );
-	var game = new Phaser.Game(2400, 1800, Phaser.CANVAS, 'game', { preload: preload, create: create, update: update});// render: render });
+	var game = new Phaser.Game(1600, 1200, Phaser.CANVAS, 'game', { preload: preload, create: create, update: update});// render: render });
     
     function preload() {
         // Load an image and call it 'logo'.
@@ -59,7 +59,7 @@ window.onload = function()
 		scoreText = game.add.text(10, 10, scoreString + score, { font: '34px Arial', fill: '#fff' });
 		//Timer
 		time=0;
-		timeText = game.add.text(2200, 10, timeString + time, { font: '34px Arial', fill: '#fff' });
+		timeText = game.add.text(1400, 10, timeString + time, { font: '34px Arial', fill: '#fff' });
 		//  Text
 		stateText = game.add.text(game.world.centerX,game.world.centerY,' ', { font: '84px Arial', fill: '#fff' });
 		stateText.anchor.setTo(0.5, 0.5);
