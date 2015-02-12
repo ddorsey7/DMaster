@@ -35,7 +35,7 @@ window.onload = function()
 	var scoreText;
 	var stateText;
 	
-	var time=0;
+	var time=60;
 	var timeString="Time: ";
 	var timeText;
 
@@ -133,7 +133,7 @@ window.onload = function()
 	
 	function updateTime()
 	{
-		time -= Math.floor(game.time.time / 1000) % 60;
+		time -= Math.floor(game.time.time / 60000) % 60;
 		timeText.text= timeString + time;
 		
 		if((time == 0)&&(score<1000))
