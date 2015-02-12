@@ -14,40 +14,82 @@ window.onload = function()
     
     "use strict";
     
-    var game = new Phaser.Game( 800, 600, Phaser.AUTO, 'game', { preload: preload, create: create, update: update } );
+    //var game = new Phaser.Game( 800, 600, Phaser.AUTO, 'game', { preload: preload, create: create, update: update } );
+	var game = new Phaser.Game(800, 600, Phaser.CANVAS, 'game', { preload: preload, create: create, update: update, render: render });
     
     function preload() {
         // Load an image and call it 'logo'.
-        game.load.image( 'logo', 'assets/ball.png' );
+        game.load.image( 'ball', 'assets/ball.png' );
+		game.load.image( 'dude', 'assets/cat.jpeg' );
     }
     
     var bouncy;
     
-    function create() {
-        // Create a sprite at the center of the screen using the 'logo' image.
-        bouncy = game.add.sprite( game.world.centerX, game.world.centerY, 'logo' );
-        // Anchor the sprite at its center, as opposed to its top-left corner.
-        // so it will be truly centered.
-        bouncy.anchor.setTo( 0.5, 0.5 );
-        
-        // Turn on the arcade physics engine for this sprite.
-        game.physics.enable( bouncy, Phaser.Physics.ARCADE );
-        // Make it bounce off of the world bounds.
-        bouncy.body.collideWorldBounds = true;
-        
-        // Add some text using a CSS style.
-        // Center it in X, and position its top 15 pixels from the top of the world.
-        var style = { font: "25px Verdana", fill: "#9999ff", align: "center" };
-        var text = game.add.text( game.world.centerX, 15, "Build something awesome.", style );
-        text.anchor.setTo( 0.5, 0.0 );
+    var image;
+
+function create() {
+
+    game.physics.startSystem(Phaser.Physics.ARCADE);
+
+    cursors = game.input.keyboard.createCursorKeys();
+    
+    //  This creates a simple sprite that is using our loaded image and
+    //  displays it on-screen
+    //  and assign it to a variable
+    ball = game.add.sprite(400, 200, 'ball');
+
+    knocker = game.add.sprite(400, 200, 'dude');
+
+    game.physics.enable([knocker,ball], Phaser.Physics.ARCADE);
+
+    knocker.body.immovable = true;
+
+    //  This gets it moving
+    ball.body.velocity.setTo(200, 200);
+
+    //  This makes the game world bounce-able
+    ball.body.collideWorldBounds = true;
+
+    //  This sets the image bounce energy for the horizontal 
+    //  and vertical vectors (as an x,y point). "1" is 100% energy return
+    ball.body.bounce.setTo(1, 1);
+
+
+}
+
+//  Move the knocker with the arrow keys
+function update () {
+
+    //  Enable physics between the knocker and the ball
+    game.physics.arcade.collide(knocker, ball);
+
+    if (cursors.up.isDown)
+    {
+        knocker.body.velocity.y = -300;
+    }
+    else if (cursors.down.isDown)
+    {
+        knocker.body.velocity.y =  300;
+    }
+    else if (cursors.left.isDown)
+    {
+        knocker.body.velocity.x = -300;
+    }
+    else if (cursors.right.isDown)
+    {
+        knocker.body.velocity.x = 300;
+    } 
+    else
+    {
+        knocker.body.velocity.setTo(0, 0);
     }
     
-    function update() {
-        // Accelerate the 'logo' sprite towards the cursor,
-        // accelerating at 500 pixels/second and moving no faster than 500 pixels/second
-        // in X or Y.
-        // This function returns the rotation angle that makes it visually match its
-        // new trajectory.
-        bouncy.rotation = game.physics.arcade.accelerateToPointer( bouncy, this.game.input.activePointer, 500, 500, 500 );
-    }
+}
+
+function render () {
+
+    //debug helper
+    game.debug.spriteInfo(ball, 32, 32);
+
+}
 };
