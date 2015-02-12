@@ -20,7 +20,7 @@ window.onload = function()
     function preload() {
         // Load an image and call it 'logo'.
         game.load.image( 'ball', 'assets/ball.png' );
-		game.load.image( 'dude', 'assets/cat.jpg' );
+		game.load.image( 'dude', 'assets/cat.png' );
     }
     
     var bouncy;
