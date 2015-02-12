@@ -71,7 +71,7 @@ window.onload = function()
 		stateText.visible = false;
 		
 
-		for (var i = 0; i < 3; i++)
+		for (var i = 0; i < 4; i++)
 		{
 			var s = balls.create(game.rnd.integerInRange(100, 700), game.rnd.integerInRange(32, 200), 'ball');
 		
@@ -80,7 +80,7 @@ window.onload = function()
 			s.body.velocity.y = game.rnd.integerInRange(-400, 400);
 		}
 	
-		knocker = game.add.sprite(1000, 1000, 'dude');
+		knocker = game.add.sprite(game.world.centerX,game.world.centerY, 'dude');
 
 		game.physics.enable([knocker,balls], Phaser.Physics.ARCADE);
 
