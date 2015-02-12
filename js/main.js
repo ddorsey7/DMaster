@@ -67,7 +67,7 @@ function create() {
 	balls.setAll('body.collideWorldBounds', true);
 	balls.setAll('body.bounce.x', 1);
 	balls.setAll('body.bounce.y', 1);
-	//balls.setAll('body.minBounceVelocity', 0);
+	balls.setAll('body.minBounceVelocity', 0);
 
     //  This makes the game world bounce-able
     //ball.body.collideWorldBounds = true;
