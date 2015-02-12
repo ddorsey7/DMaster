@@ -21,6 +21,7 @@ window.onload = function()
         // Load an image and call it 'logo'.
         game.load.image( 'ball', 'assets/ball.png' );
 		game.load.image( 'dude', 'assets/cat.png' );
+		game.load.image( 'box', 'assets/box.png' );
     }
     
     var bouncy;
@@ -38,8 +39,12 @@ window.onload = function()
 	var time;
 	var timeString="Time: ";
 	var timeText;
+	
+	var bg;
 
 	function create() {
+		//background
+		bg = game.add.tileSprite(0, 0, 800, 600, 'box');
 
 		game.physics.startSystem(Phaser.Physics.ARCADE);
 
@@ -54,7 +59,7 @@ window.onload = function()
 	
 		//text
 		// The score
-		score=10000;
+		score=1000;
 		scoreString = 'Life : ';
 		scoreText = game.add.text(10, 10, scoreString + score, { font: '34px Arial', fill: '#fff' });
 		//Timer
@@ -66,7 +71,7 @@ window.onload = function()
 		stateText.visible = false;
 		
 
-		for (var i = 0; i < 10; i++)
+		for (var i = 0; i < 5; i++)
 		{
 			var s = balls.create(game.rnd.integerInRange(100, 700), game.rnd.integerInRange(32, 200), 'ball');
 		
