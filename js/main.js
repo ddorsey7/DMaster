@@ -1,4 +1,5 @@
-window.onload = function() {
+window.onload = function()
+{
     // You might want to start with a template that uses GameStates:
     //     https://github.com/photonstorm/phaser/tree/master/resources/Project%20Templates/Basic
     
@@ -17,7 +18,7 @@ window.onload = function() {
     
     function preload() {
         // Load an image and call it 'logo'.
-        game.load.image( 'logo', 'assets/phaser.png' );
+        game.load.image( 'logo', 'assets/ball.png' );
     }
     
     var bouncy;
