@@ -96,7 +96,7 @@ window.onload = function()
 	function update () {
 
     //  Enable physics between the knocker and the ball
-		//game.physics.arcade.collide(knocker, balls);
+		game.physics.arcade.collide(knocker, balls);
 	
 	//score keeper
 		game.physics.arcade.overlap(knocker, balls, collisionHandler, null, this);
