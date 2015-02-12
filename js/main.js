@@ -58,7 +58,7 @@ function create() {
 	
     knocker = game.add.sprite(400, 200, 'dude');
 
-    game.physics.enable([knocker,ball], Phaser.Physics.ARCADE);
+    game.physics.enable([knocker,balls], Phaser.Physics.ARCADE);
 
     knocker.body.immovable = true;
 
