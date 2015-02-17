@@ -21,7 +21,7 @@ window.onload = function()
         // Load an image and call it 'logo'.
         game.load.image( 'ball', 'assets/ball.png' );
 		game.load.image( 'dude', 'assets/cat.png' );
-		game.load.image( 'box', 'assets/box.png' );
+		game.load.image( 'box', 'assets/box.jpg' );
     }
     
     var bouncy;
