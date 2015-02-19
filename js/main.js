@@ -111,7 +111,7 @@ window.onload = function()
 		//time
 		updateTime();
 		//score keeper
-		game.physics.arcade.collide(knocker, balls, collisionHandler, null, this);
+		game.physics.arcade.collide(knocker, balls, hit, null, this);
 		// Enable physics between balls
 		game.physics.arcade.collide(balls);
 		//new code
@@ -147,4 +147,33 @@ window.onload = function()
 		}
 		
 	}
+	
+	function hit (knocker, balls) {
+
+    balls.kill();
+
+    score += 10;
+
+    scoreText.text = 'score: ' + score;
+
+    //  Are they any bricks left?
+    if (balls.countLiving() == 0)
+    {
+        //  New level starts
+        score += 1000;
+        scoreText.text = 'score: ' + score;
+        introText.text = '- Next Level -';
+
+        //  Let's move the ball back to the paddle
+        //ballOnPaddle = true;
+        //ball.body.velocity.set(0);
+        //ball.x = paddle.x + 16;
+        //ball.y = paddle.y - 16;
+        //ball.animations.stop();
+
+        //  And bring the bricks back from the dead :)
+        balls.callAll('revive');
+    }
+
+}
 };
