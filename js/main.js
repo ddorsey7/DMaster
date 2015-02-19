@@ -132,12 +132,6 @@ window.onload = function()
 		
 		scoreText.text = scoreString + score;
 		
-		/*if (score == 0)
-		{
-			scoreText.text = scoreString + score;
-			stateText.text = " You Died!";
-			stateText.visible = true;
-		}*/
 	}
 	
 	function updateTime()
@@ -148,7 +142,11 @@ window.onload = function()
 			time=0;
 		flag=false;
 		timeText.text= "time: "+time + "/60";
-		
+		if (score>=1000)
+		{
+			stateText.text = "You Won";
+			stateText.visible = true;
+		}
 		if((time == 59)&(score>=1000))
 		{
 			stateText.text = "You Won";
@@ -162,9 +160,7 @@ window.onload = function()
 	}
 	
 	function hit (knocker, balls) {
-
-    //balls.kill();
-
+	
     score += 10;
 
     scoreText.text = 'score: ' + score;
