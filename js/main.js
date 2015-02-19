@@ -15,7 +15,7 @@ window.onload = function()
     "use strict";
     
     //var game = new Phaser.Game( 800, 600, Phaser.AUTO, 'game', { preload: preload, create: create, update: update } );
-	var game = new Phaser.Game(2000, 1435, Phaser.CANVAS, 'game', { preload: preload, create: create, update: update});// render: render });
+	var game = new Phaser.Game(1600, 1200, Phaser.CANVAS, 'game', { preload: preload, create: create, update: update});// render: render });
     
     function preload() {
         // Load an image and call it 'logo'.
@@ -79,7 +79,7 @@ window.onload = function()
 		stateText.visible = false;
 		
 
-		for (var i = 0; i < 4; i++)
+		for (var i = 0; i < 10; i++)
 		{
 			var s = balls.create(game.rnd.integerInRange(100, 700), game.rnd.integerInRange(32, 200), 'ball');
 		
@@ -142,9 +142,9 @@ window.onload = function()
 	
 	function updateTime()
 	{
-		var current=(Math.floor(game.time.time / 1000) % 60);
+		
 		time = (Math.floor(game.time.time / 1000) % 60);
-		if(flag)
+		if(flag==true)
 			time=0;
 		flag=false;
 		timeText.text= "time: "+time + "/60";
