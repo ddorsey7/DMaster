@@ -79,7 +79,7 @@ window.onload = function()
 		stateText.visible = false;
 		
 
-		for (var i = 0; i < 10; i++)
+		for (var i = 0; i < 5; i++)
 		{
 			var s = balls.create(game.rnd.integerInRange(100, 700), game.rnd.integerInRange(32, 200), 'ball');
 		
@@ -122,7 +122,7 @@ window.onload = function()
 		game.physics.arcade.collide(balls);
 		//new code
 		knocker.rotation = game.physics.arcade.moveToPointer(knocker, 60, game.input.activePointer, 500);
-		cop.rotation = game.physics.arcade.moveToObject(cop, knocker, 30,500);
+		cop.rotation = game.physics.arcade.moveToObject(cop, knocker, 15,500);
 	}
 	
 	function collisionHandler (bullet, alien) 
