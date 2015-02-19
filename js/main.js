@@ -114,6 +114,8 @@ window.onload = function()
 		updateTime();
 		//score keeper
 		game.physics.arcade.collide(knocker, balls, hit, null, this);
+		//Cop hit
+		game.physics.arcade.collide(knocker, cop, collisionHandler, null, this);
 		// Enable physics between balls
 		game.physics.arcade.collide(balls);
 		//new code
@@ -128,12 +130,12 @@ window.onload = function()
 		
 		scoreText.text = scoreString + score;
 		
-		if (score == 0)
+		/*if (score == 0)
 		{
 			scoreText.text = scoreString + score;
 			stateText.text = " You Died!";
 			stateText.visible = true;
-		}
+		}*/
 	}
 	
 	function updateTime()
@@ -142,40 +144,25 @@ window.onload = function()
 		time = Math.floor(game.time.time / 1000) % 60;
 		timeText.text= "time: "+time + "/60";
 		
-		if(time == 59)
+		if((time == 59)&(score>=1000))
 		{
-			stateText.text = "You Survived";
+			stateText.text = "You Won";
 			stateText.visible = true;
 		}
-		
+		if((time == 59)&(score<1000))
+		{
+			stateText.text = "You Lose";
+			stateText.visible = true;
+		}
 	}
 	
 	function hit (knocker, balls) {
 
-    balls.kill();
+    //balls.kill();
 
     score += 10;
 
     scoreText.text = 'score: ' + score;
 
-    //  Are they any bricks left?
-    if (balls.countLiving() == 0)
-    {
-        //  New level starts
-        score += 1000;
-        scoreText.text = 'score: ' + score;
-        introText.text = '- Next Level -';
-
-        //  Let's move the ball back to the paddle
-        //ballOnPaddle = true;
-        //ball.body.velocity.set(0);
-        //ball.x = paddle.x + 16;
-        //ball.y = paddle.y - 16;
-        //ball.animations.stop();
-
-        //  And bring the bricks back from the dead :)
-        balls.callAll('revive');
-    }
-
-}
+	}
 };
