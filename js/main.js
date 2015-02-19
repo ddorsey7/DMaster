@@ -15,13 +15,13 @@ window.onload = function()
     "use strict";
     
     //var game = new Phaser.Game( 800, 600, Phaser.AUTO, 'game', { preload: preload, create: create, update: update } );
-	var game = new Phaser.Game(800, 600, Phaser.CANVAS, 'game', { preload: preload, create: create, update: update});// render: render });
+	var game = new Phaser.Game(2000, 1435, Phaser.CANVAS, 'game', { preload: preload, create: create, update: update});// render: render });
     
     function preload() {
         // Load an image and call it 'logo'.
         game.load.image( 'ball', 'assets/car.png' );
 		game.load.image( 'dude', 'assets/mycar.png' );
-		game.load.image( 'box', 'assets/street.jpg' );
+		game.load.image( 'box', 'assets/street.png' );
 		
 		game.load.image( 'cop', 'assets/police.png');
 		
