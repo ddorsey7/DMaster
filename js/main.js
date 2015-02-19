@@ -120,7 +120,7 @@ window.onload = function()
 		game.physics.arcade.collide(balls);
 		//new code
 		knocker.rotation = game.physics.arcade.moveToPointer(knocker, 60, game.input.activePointer, 500);
-		cop.rotation = game.physics.arcade.moveToObject(cop, knocker, 60,500);
+		cop.rotation = game.physics.arcade.moveToObject(cop, knocker, 60,250);
 	}
 	
 	function collisionHandler (bullet, alien) 
@@ -140,8 +140,9 @@ window.onload = function()
 	
 	function updateTime()
 	{
-		
-		time = (Math.floor(game.time.time / 1000) % 60)-game.time.time;
+		current=game.time.time;
+		time = (Math.floor(game.time.time / 1000) % 60);
+		time=time-current;
 		timeText.text= "time: "+time + "/60";
 		
 		if((time == 59)&(score>=1000))
