@@ -145,7 +145,7 @@ window.onload = function()
 		var current=(Math.floor(game.time.time / 1000) % 60);
 		time = (Math.floor(game.time.time / 1000) % 60);
 		if(flag)
-			time=time-current;
+			time=0;
 		flag=false;
 		timeText.text= "time: "+time + "/60";
 		
