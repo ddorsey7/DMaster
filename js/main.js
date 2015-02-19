@@ -58,6 +58,8 @@ window.onload = function()
 		//  displays it on-screen
 		//  and assign it to a variable
 		balls = game.add.group();//game.add.sprite(400, 200, 'ball');
+		balls.enableBody = true;
+		balls.physicsBodyType = Phaser.Physics.ARCADE;
 		//add multiple balls
 		//sprites = game.add.group();
 	
