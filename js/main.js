@@ -87,7 +87,7 @@ window.onload = function()
 		knocker = game.add.sprite(game.world.centerX,game.world.centerY, 'dude');
 		cop = game.add.sprite(game.rnd.integerInRange(100, 700), game.rnd.integerInRange(32, 200), 'cop');
 
-		game.physics.enable([knocker,balls], Phaser.Physics.ARCADE);
+		game.physics.enable([knocker,balls,cop], Phaser.Physics.ARCADE);
 
 		//knocker.body.immovable = true;
 		knocker.anchor.setTo(0.5,0.5);//new code
