@@ -65,7 +65,7 @@ window.onload = function()
 	
 		//text
 		// The score
-		score=1000;
+		score=0;
 		scoreString = 'Life : ';
 		scoreText = game.add.text(10, 10, scoreString + score, { font: '34px Arial', fill: '#fff' });
 		//Timer
@@ -125,7 +125,7 @@ window.onload = function()
 	
 	function collisionHandler (bullet, alien) 
 	{
-		if(score!=0)
+		if(score>0)
 			score -= 20;
 		
 		scoreText.text = scoreString + score;
@@ -141,7 +141,7 @@ window.onload = function()
 	function updateTime()
 	{
 		
-		time = Math.floor(game.time.time / 1000) % 60;
+		time = (Math.floor(game.time.time / 1000) % 60)-game.time.time;
 		timeText.text= "time: "+time + "/60";
 		
 		if((time == 59)&(score>=1000))
