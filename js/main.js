@@ -23,7 +23,7 @@ window.onload = function()
 		game.load.image( 'dude', 'assets/mycar.png' );
 		game.load.image( 'box', 'assets/box.jpg' );
 		
-		game.load.image( 'cop', 'asserts/police.png');
+		game.load.image( 'cop', 'assets/police.png');
 		
     }
     
