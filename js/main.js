@@ -21,7 +21,7 @@ window.onload = function()
         // Load an image and call it 'logo'.
         game.load.image( 'ball', 'assets/car.png' );
 		game.load.image( 'dude', 'assets/mycar.png' );
-		game.load.image( 'box', 'assets/box.jpg' );
+		game.load.image( 'box', 'assets/street.jpg' );
 		
 		game.load.image( 'cop', 'assets/police.png');
 		
@@ -140,7 +140,7 @@ window.onload = function()
 	
 	function updateTime()
 	{
-		current=game.time.time;
+		var current=game.time.time;
 		time = (Math.floor(game.time.time / 1000) % 60);
 		time=time-current;
 		timeText.text= "time: "+time + "/60";
