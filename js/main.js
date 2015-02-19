@@ -20,7 +20,7 @@ window.onload = function()
     function preload() {
         // Load an image and call it 'logo'.
         game.load.image( 'ball', 'assets/ball.png' );
-		game.load.image( 'dude', 'assets/cat.png' );
+		game.load.image( 'dude', 'assets/mycar.png' );
 		game.load.image( 'box', 'assets/box.jpg' );
 		
 		game.load.image( 'cop', 'asserts/police.png');
@@ -85,7 +85,7 @@ window.onload = function()
 		}
 	
 		knocker = game.add.sprite(game.world.centerX,game.world.centerY, 'dude');
-		cop = game.add.sprite(game.rnd.integerInRange(100, 700), game.rnd.integerInRange(32, 200), 'police');
+		cop = game.add.sprite(game.rnd.integerInRange(100, 700), game.rnd.integerInRange(32, 200), 'cop');
 
 		game.physics.enable([knocker,balls], Phaser.Physics.ARCADE);
 
@@ -93,6 +93,11 @@ window.onload = function()
 		knocker.anchor.setTo(0.5,0.5);//new code
 		knocker.body.collideWorldBounds = true;
 		knocker.body.allowRotation= false;//new code
+		
+		//cop code
+		cop.anchor.setTo(0.5,0.5);//new code
+		cop.body.collideWorldBounds = true;
+		cop.body.allowRotation= false;//new code
 
 		//This gets it moving
 		balls.setAll('body.collideWorldBounds', true);
@@ -111,6 +116,7 @@ window.onload = function()
 		game.physics.arcade.collide(balls);
 		//new code
 		knocker.rotation = game.physics.arcade.moveToPointer(knocker, 60, game.input.activePointer, 500);
+		cop.rotation = game.physics.arcade.moveToObject(cop, knocker, 60,500);
 	}
 	
 	function collisionHandler (bullet, alien) 
