@@ -171,4 +171,17 @@ window.onload = function()
 		}
 
 	}
+	
+	function fire() {
+
+    var ball = balls.getFirstExists(false);
+
+    if (ball)
+    {
+        ball.frame = game.rnd.integerInRange(0,6);
+        ball.exists = true;
+        ball.reset(game.world.randomX, 0);
+    }
+
+}
 };
