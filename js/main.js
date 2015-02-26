@@ -55,7 +55,7 @@ window.onload = function()
 		game.physics.startSystem(Phaser.Physics.ARCADE);
 		game.physics.arcade.gravity.y = 400;
 		game.time.events.loop(150, fire, this);
-		game.physics.enable([knocker,balls,cop], Phaser.Physics.ARCADE);
+		
 
 		cursors = game.input.keyboard.createCursorKeys();
     
@@ -90,6 +90,7 @@ window.onload = function()
 		knocker.body.allowRotation= false;//new code
 		knocker.body.allowGravity = 0;
 		
+		game.physics.enable([knocker,balls,cop], Phaser.Physics.ARCADE);
 		//cop code
 		//cop.anchor.setTo(0.5,0.5);//new code
 		//cop.body.collideWorldBounds = true;
