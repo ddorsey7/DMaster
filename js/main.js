@@ -21,7 +21,7 @@ window.onload = function()
         // Load an image and call it 'logo'.
         game.load.image( 'ball', 'assets/bomb.png' );
 		game.load.image( 'dude', 'assets/jet.png' );
-		game.load.image( 'box', 'assets/ibg.jpeg' );
+		game.load.image( 'box', 'assets/ibg.jpg' );
 		
 		game.load.image( 'cop', 'assets/police.png');
 		
