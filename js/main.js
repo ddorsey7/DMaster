@@ -56,6 +56,9 @@ window.onload = function()
 		game.physics.arcade.gravity.y = 400;
 		game.time.events.loop(150, fire, this);
 		
+		//music
+		game.load.audio('boden', ['assets/audio/bodenstaendig_2000_in_rock_4bit.mp3', 'assets/Power.m4a']);
+
 
 		cursors = game.input.keyboard.createCursorKeys();
     
@@ -88,7 +91,7 @@ window.onload = function()
 		knocker.anchor.setTo(0.5,0.5);//new code
 		knocker.body.collideWorldBounds = true;
 		knocker.body.allowRotation= false;//new code
-		knocker.body.allowGravity = 0;
+		//knocker.body.allowGravity = 0;
 		
 		
 		//cop code
@@ -118,6 +121,9 @@ window.onload = function()
 		cop.rotation = game.physics.arcade.moveToObject(cop, knocker, 15,500);
 		//Resets balls
 		balls.forEachAlive(checkBounds, this);
+		//music
+		music = game.add.audio('boden');
+		music.play();
 	}
 	
 	function collisionHandler (knocker, cop) 
