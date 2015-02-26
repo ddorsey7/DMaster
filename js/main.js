@@ -47,6 +47,8 @@ window.onload = function()
 	var bg;
 	
 	var flag=true;
+	
+	var music;
 
 	function create() {
 		//background
