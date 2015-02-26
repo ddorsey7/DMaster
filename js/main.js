@@ -25,7 +25,7 @@ window.onload = function()
 		
 		game.load.image( 'cop', 'assets/police.png');
 		
-		game.load.audio('boden', ['assets/audio/bodenstaendig_2000_in_rock_4bit.mp3', 'assets/Power.m4a']);
+		game.load.audio('boden', 'assets/Power.m4a');
 		
     }
     
@@ -57,7 +57,7 @@ window.onload = function()
 		bg = game.add.tileSprite(0, 0, 1600, 1200, 'box');
 
 		game.physics.startSystem(Phaser.Physics.ARCADE);
-		game.physics.arcade.gravity.y = 400;
+		game.physics.arcade.gravity.y = 200;
 		game.time.events.loop(150, fire, this);
 		
 		//music
