@@ -88,10 +88,10 @@ window.onload = function()
 		//cop = game.add.sprite(game.rnd.integerInRange(100, 700), game.rnd.integerInRange(32, 200), 'cop');
 		game.physics.enable([knocker,balls,cop], Phaser.Physics.ARCADE);
 		//knocker.body.immovable = true;
-		knocker.anchor.setTo(0.5,0.5);//new code
+		//knocker.anchor.setTo(0.5,0.5);//new code
 		knocker.body.collideWorldBounds = true;
 		knocker.body.allowRotation= false;//new code
-		//knocker.body.allowGravity = 0;
+		knocker.body.allowGravity = 0;
 		
 		
 		//cop code
