@@ -70,7 +70,7 @@ window.onload = function()
 		
 		// The score
 		score=0;
-		scoreString = 'Life : ';
+		scoreString = 'Score : ';
 		scoreText = game.add.text(10, 10, scoreString + score, { font: '68px Arial', fill: '#fff' });
 		
 		//Timer
@@ -118,7 +118,7 @@ window.onload = function()
 		game.physics.arcade.collide(balls);
 		//new code
 		knocker.rotation = game.physics.arcade.moveToPointer(knocker, 60, game.input.activePointer, 500);
-		cop.rotation = game.physics.arcade.moveToObject(cop, knocker, 15,500);
+		//cop.rotation = game.physics.arcade.moveToObject(cop, knocker, 15,500);
 		//Resets balls
 		balls.forEachAlive(checkBounds, this);
 		//music
