@@ -19,9 +19,9 @@ window.onload = function()
     
     function preload() {
         // Load an image and call it 'logo'.
-        game.load.image( 'ball', 'assets/car.png' );
-		game.load.image( 'dude', 'assets/mycar.png' );
-		game.load.image( 'box', 'assets/street.png' );
+        game.load.image( 'ball', 'assets/bomb.png' );
+		game.load.image( 'dude', 'assets/jet.png' );
+		game.load.image( 'box', 'assets/ibg.jpeg' );
 		
 		game.load.image( 'cop', 'assets/police.png');
 		
@@ -71,8 +71,8 @@ window.onload = function()
 		scoreText = game.add.text(10, 10, scoreString + score, { font: '68px Arial', fill: '#fff' });
 		
 		//Timer
-		var gameRT=(Math.floor(game.time.time / 1000) % 60);
-		time=0-gameRT;
+		//var gameRT=(Math.floor(game.time.time / 1000) % 60);
+		time=0;//-gameRT;
 		timeText = game.add.text(1000, 10, timeString + time, { font: '68px Arial', fill: '#fff' });
 		
 		//  Text
@@ -82,7 +82,7 @@ window.onload = function()
 		
 		
 		knocker = game.add.sprite(game.world.centerX,game.world.centerY, 'dude');
-		cop = game.add.sprite(game.rnd.integerInRange(100, 700), game.rnd.integerInRange(32, 200), 'cop');
+		//cop = game.add.sprite(game.rnd.integerInRange(100, 700), game.rnd.integerInRange(32, 200), 'cop');
 		game.physics.enable([knocker,balls,cop], Phaser.Physics.ARCADE);
 		//knocker.body.immovable = true;
 		knocker.anchor.setTo(0.5,0.5);//new code
@@ -166,9 +166,12 @@ window.onload = function()
 	
 	function checkBounds(ball) {
 
-		if (ball.y > 600)
+		if (ball.y > 1200)
 		{
 			ball.kill();
+			score -= 10;
+
+			scoreText.text = 'score: ' + score;
 		}
 
 	}
