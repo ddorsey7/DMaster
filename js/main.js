@@ -25,6 +25,8 @@ window.onload = function()
 		
 		game.load.image( 'cop', 'assets/police.png');
 		
+		game.load.audio('boden', ['assets/audio/bodenstaendig_2000_in_rock_4bit.mp3', 'assets/Power.m4a']);
+		
     }
     
     var bouncy;
@@ -59,7 +61,7 @@ window.onload = function()
 		game.time.events.loop(150, fire, this);
 		
 		//music
-		game.load.audio('boden', ['assets/audio/bodenstaendig_2000_in_rock_4bit.mp3', 'assets/Power.m4a']);
+		
 
 
 		cursors = game.input.keyboard.createCursorKeys();
@@ -68,7 +70,7 @@ window.onload = function()
 		//  displays it on-screen
 		//  and assign it to a variable
 		balls = game.add.group();
-		balls.createMultiple(10, 'ball', 0, false);
+		balls.createMultiple(3, 'ball', 0, false);
 		
 		// The score
 		score=0;
@@ -95,6 +97,8 @@ window.onload = function()
 		knocker.body.allowRotation= false;//new code
 		knocker.body.allowGravity = 0;
 		
+		music = game.add.audio('boden');
+		music.play();
 		
 		//cop code
 		//cop.anchor.setTo(0.5,0.5);//new code
@@ -124,8 +128,7 @@ window.onload = function()
 		//Resets balls
 		balls.forEachAlive(checkBounds, this);
 		//music
-		music = game.add.audio('boden');
-		music.play();
+		
 	}
 	
 	function collisionHandler (knocker, cop) 
@@ -166,7 +169,7 @@ window.onload = function()
 	
 		ball.kill();
 	
-		score += 10;
+		score += 20;
 
 		scoreText.text = 'score: ' + score;
 
