@@ -159,7 +159,9 @@ window.onload = function()
 		}
 	}
 	
-	function hit (knocker, balls) {
+	function hit (knocker, ball) {
+	
+	ball.kill();
 	
     score += 10;
 
