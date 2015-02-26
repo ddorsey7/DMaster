@@ -71,7 +71,8 @@ window.onload = function()
 		scoreString = 'Life : ';
 		scoreText = game.add.text(10, 10, scoreString + score, { font: '68px Arial', fill: '#fff' });
 		//Timer
-		time=0;
+		var gameRT=(Math.floor(game.time.time / 1000) % 60);
+		time=0-gameRT;
 		timeText = game.add.text(1000, 10, timeString + time, { font: '68px Arial', fill: '#fff' });
 		//  Text
 		stateText = game.add.text(game.world.centerX,game.world.centerY,' ', { font: '84px Arial', fill: '#fff' });
@@ -136,8 +137,8 @@ window.onload = function()
 	
 	function updateTime()
 	{
-		var gameRT=(Math.floor(game.time.time / 1000) % 60);
-		time = (Math.floor(game.time.time / 1000) % 60)-gameRT;
+		
+		time = (Math.floor(game.time.time / 1000) % 60);
 		if(flag==true)
 			time=0;
 		flag=false;
