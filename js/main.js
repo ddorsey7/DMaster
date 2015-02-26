@@ -143,7 +143,7 @@ window.onload = function()
 	function updateTime()
 	{
 		
-		time += (Math.floor(game.time.time / 1000) % 60);
+		time = (Math.floor(game.time.time / 1000) % 60);
 		if(flag==true)
 			time=0;
 		flag=false;
