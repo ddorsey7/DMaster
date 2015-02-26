@@ -51,6 +51,8 @@ window.onload = function()
 	var flag=true;
 	
 	var music;
+	
+	var startTime;
 
 	function create() {
 		//background
@@ -62,7 +64,7 @@ window.onload = function()
 		
 		//music
 		
-
+		startTime=game.time.time;
 
 		cursors = game.input.keyboard.createCursorKeys();
     
@@ -143,7 +145,7 @@ window.onload = function()
 	function updateTime()
 	{
 		
-		time = (Math.floor(game.time.time / 1000) % 60);
+		time = (Math.floor((game.time.time-startTime) / 1000);// % 60);
 		if(flag==true)
 			time=0;
 		flag=false;
