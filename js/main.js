@@ -5,7 +5,8 @@ window.onload = function()
     //var game = new Phaser.Game( 800, 600, Phaser.AUTO, 'game', { preload: preload, create: create, update: update } );
 	var game = new Phaser.Game(1600, 1200, Phaser.CANVAS, 'game', { preload: preload, create: create, update: update});// render: render });
     
-    function preload() {
+    function preload() 
+	{
         // Load an image and call it 'logo'
 		game.load.image( 'ball', 'assets/car.png' );
 		game.load.image( 'dude', 'assets/mycar.png' );
@@ -78,7 +79,7 @@ window.onload = function()
 		sprite = game.add.sprite(400, 300, 'arrow');
 		sprite.anchor.set(0.5);
 
-		for (var i = 0; i < 4; i++)
+		for (var i = 0; i < 10; i++)
 		{
 			var s = balls.create(game.rnd.integerInRange(100, 700), game.rnd.integerInRange(32, 200), 'ball');
 		
@@ -137,8 +138,10 @@ window.onload = function()
 		fire();
 	}
 	
-	function hitByBullet (knocker, balls) 
+	function hitByBullet (knocker, bullet) 
 	{
+		bullet.kill();
+		
 		if(score>=0)
 		{
 			score -= 20;
@@ -170,7 +173,7 @@ window.onload = function()
 		if(time>60)
 			time-=60;
 		
-		timeText.text= "time: "+time + "/60";
+		timeText.text= "time: "+time + " secs";//60";
 		if (score>=1000)
 		{
 			stateText.text = "You Won";
@@ -192,7 +195,7 @@ window.onload = function()
 	{
 
 		//if (game.time.now > nextFire && bullets.countDead() > 0)
-		if(nextFire==50)
+		if(nextFire==25)
 		{
 			//nextFire = game.time.now + fireRate;
 
