@@ -168,9 +168,7 @@ window.onload = function()
 	{
 		
 		time = (Math.floor((game.time.time-startTime) / 1000));// % 60);
-		if(flag==true)
-			time=0;
-		flag=false;
+		
 		timeText.text= "time: "+time + "/60";
 		if (score>=1000)
 		{
