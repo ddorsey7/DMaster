@@ -72,6 +72,9 @@ window.onload = function()
 		stateText.anchor.setTo(0.5, 0.5);
 		stateText.visible = false;
 		
+		//shoot
+		sprite = game.add.sprite(400, 300, 'arrow');
+		sprite.anchor.set(0.5);
 
 		for (var i = 0; i < 4; i++)
 		{
