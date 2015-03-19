@@ -35,6 +35,7 @@ window.onload = function()
 	var time;
 	var timeString="Time: ";
 	var timeText;
+	var startTime;
 	
 	var bg;
 	
@@ -66,6 +67,7 @@ window.onload = function()
 		scoreString = 'Score: ';
 		scoreText = game.add.text(10, 10, scoreString + score, { font: '84px Arial', fill: '#fff' });
 		//Timer
+		startTime=game.time.time;
 		time=0;
 		timeText = game.add.text(1100, 10, timeString + time, { font: '84px Arial', fill: '#fff' });
 		//  Text
