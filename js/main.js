@@ -136,9 +136,6 @@ window.onload = function()
 		//shooter
 		sprite.rotation = game.physics.arcade.angleToPointer(sprite);
 		fire();
-		
-		//bullet
-		game.physics.arcade.collide(knocker, bullet, hitByBullet, null, this);
 	}
 	
 	function hitByBullet (knocker, bullet) 
@@ -208,7 +205,9 @@ window.onload = function()
 
 			game.physics.arcade.moveToPointer(bullet, 300);
 			
+			game.physics.enable(bullet, Phaser.Physics.ARCADE);
 			
+			game.physics.arcade.collide(knocker, bullet, hitByBullet, null, this);
 			
 			nextFire=0;
 		}
