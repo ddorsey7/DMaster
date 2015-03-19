@@ -85,6 +85,8 @@ function fire() {
         bullet.reset(sprite.x - 8, sprite.y - 8);
 
         game.physics.arcade.moveToPointer(bullet, 300);
+		
+		nextFire=0;	
 	}
 	nextFire++;
 }
