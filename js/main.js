@@ -78,7 +78,7 @@ function fire() {
 
         game.physics.arcade.moveToPointer(bullet, 300);
     }*/
-	if(nextFire==10)
+	if(nextFire==100)
 	{
 		var bullet = bullets.getFirstDead();
 
