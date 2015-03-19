@@ -11,7 +11,7 @@ window.onload = function()
 		game.load.image( 'dude', 'assets/cat.png' );
 		game.load.image( 'box', 'assets/box.jpg' );
 		
-		game.load.image( 'cop', 'asserts/police.png');
+		game.load.image( 'cop', 'assets/police.png');
 		
 		//shooter
 		game.load.image('arrow', 'assets/police.png');
