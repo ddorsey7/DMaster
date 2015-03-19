@@ -14,8 +14,8 @@ window.onload = function()
 		game.load.image( 'cop', 'asserts/police.png');
 		
 		//shooter
-		game.load.image('arrow', 'assets/sprites/police.png');
-		game.load.image('bullet', 'assets/sprites/ball.png');
+		game.load.image('arrow', 'assets/police.png');
+		game.load.image('bullet', 'assets/ball.png');
     }
     
     var bouncy;
