@@ -68,7 +68,7 @@ function update() {
 
 function fire() {
 
-    if (game.time.now > nextFire && bullets.countDead() > 0)
+    /*if (game.time.now > nextFire && bullets.countDead() > 0)
     {
         nextFire = game.time.now + fireRate;
 
@@ -77,8 +77,16 @@ function fire() {
         bullet.reset(sprite.x - 8, sprite.y - 8);
 
         game.physics.arcade.moveToPointer(bullet, 300);
-    }
+    }*/
+	if(nextFire==10)
+	{
+		var bullet = bullets.getFirstDead();
 
+        bullet.reset(sprite.x - 8, sprite.y - 8);
+
+        game.physics.arcade.moveToPointer(bullet, 300);
+	}
+	nextFire++;
 }
 
 function render() {
