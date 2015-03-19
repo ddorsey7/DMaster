@@ -109,10 +109,12 @@ window.onload = function()
 		bullets.createMultiple(50, 'bullet');
 		bullets.setAll('checkWorldBounds', true);
 		bullets.setAll('outOfBoundsKill', true);
-    
+		
+		
 		sprite = game.add.sprite(400, 300, 'arrow');
 		sprite.anchor.set(0.5);
-
+		
+		game.physics.enable(sprite, Phaser.Physics.ARCADE);
 		sprite.body.allowRotation = false;
 	}
 
@@ -129,7 +131,7 @@ window.onload = function()
 		
 		//shooter
 		sprite.rotation = game.physics.arcade.angleToPointer(sprite);
-		shoot();
+		fire();
 	}
 	
 	function collisionHandler (bullet, alien) 
