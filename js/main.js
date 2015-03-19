@@ -3,13 +3,14 @@ window.onload = function()
     "use strict";
     
     //var game = new Phaser.Game( 800, 600, Phaser.AUTO, 'game', { preload: preload, create: create, update: update } );
-	var game = new Phaser.Game(800, 600, Phaser.CANVAS, 'game', { preload: preload, create: create, update: update});// render: render });
+	var game = new Phaser.Game(1600, 1200, Phaser.CANVAS, 'game', { preload: preload, create: create, update: update});// render: render });
     
     function preload() {
         // Load an image and call it 'logo'.
-        game.load.image( 'ball', 'assets/ball.png' );
-		game.load.image( 'dude', 'assets/cat.png' );
-		game.load.image( 'box', 'assets/box.jpg' );
+		
+		game.load.image( 'ball', 'assets/bomb.png' );
+		game.load.image( 'dude', 'assets/jet.png' );
+		game.load.image( 'box', 'assets/ibg.jpg' );
 		
 		game.load.image( 'cop', 'assets/police.png');
 		
@@ -46,7 +47,7 @@ window.onload = function()
 
 	function create() {
 		//background
-		bg = game.add.tileSprite(0, 0, 800, 600, 'box');
+		bg = game.add.tileSprite(0, 0, 1600, 1200, 'box');
 
 		game.physics.startSystem(Phaser.Physics.ARCADE);
 
