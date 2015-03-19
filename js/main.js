@@ -6,11 +6,10 @@ window.onload = function()
 	var game = new Phaser.Game(1600, 1200, Phaser.CANVAS, 'game', { preload: preload, create: create, update: update});// render: render });
     
     function preload() {
-        // Load an image and call it 'logo'.
-		
-		game.load.image( 'ball', 'assets/bomb.png' );
-		game.load.image( 'dude', 'assets/jet.png' );
-		game.load.image( 'box', 'assets/ibg.jpg' );
+        // Load an image and call it 'logo'
+		game.load.image( 'ball', 'assets/car.png' );
+		game.load.image( 'dude', 'assets/mycar.png' );
+		game.load.image( 'box', 'assets/street.png' );
 		
 		game.load.image( 'cop', 'assets/police.png');
 		
@@ -89,7 +88,7 @@ window.onload = function()
 		}
 	
 		knocker = game.add.sprite(game.world.centerX,game.world.centerY, 'dude');
-		cop = game.add.sprite(game.rnd.integerInRange(100, 700), game.rnd.integerInRange(32, 200), 'cop');
+		//cop = game.add.sprite(game.rnd.integerInRange(100, 700), game.rnd.integerInRange(32, 200), 'cop');
 
 		game.physics.enable([knocker,balls], Phaser.Physics.ARCADE);
 
@@ -114,7 +113,7 @@ window.onload = function()
 		bullets.setAll('outOfBoundsKill', true);
 		
 		
-		sprite = game.add.sprite(400, 300, 'arrow');
+		sprite = game.add.sprite(game.world.centerX,game.world.centerY, 'arrow');
 		sprite.anchor.set(0.5);
 		
 		game.physics.enable(sprite, Phaser.Physics.ARCADE);
@@ -168,6 +167,8 @@ window.onload = function()
 	{
 		
 		time = (Math.floor((game.time.time-startTime) / 1000));// % 60);
+		if(time>60)
+			time-=60;
 		
 		timeText.text= "time: "+time + "/60";
 		if (score>=1000)
@@ -191,7 +192,7 @@ window.onload = function()
 	{
 
 		//if (game.time.now > nextFire && bullets.countDead() > 0)
-		if(nextFire==100)
+		if(nextFire==50)
 		{
 			//nextFire = game.time.now + fireRate;
 
