@@ -9,10 +9,7 @@ window.onload = function()
 	{
         // Load an image and call it 'logo'
 		game.load.image( 'ball', 'assets/car.png' );
-		game.load.image( 'dude', 'assets/mycar.png' );
 		game.load.image( 'box', 'assets/street.png' );
-		
-		game.load.image( 'cop', 'assets/police.png');
 		
 		//shooter
 		game.load.image('arrow', 'assets/police.png');
@@ -72,9 +69,6 @@ window.onload = function()
 		stateText.anchor.setTo(0.5, 0.5);
 		stateText.visible = false;
 		
-		//shoot
-		sprite = game.add.sprite(400, 300, 'arrow');
-		sprite.anchor.set(0.5);
 
 		for (var i = 0; i < 10; i++)
 		{
@@ -85,15 +79,8 @@ window.onload = function()
 			s.body.velocity.y = game.rnd.integerInRange(-400, 400);
 		}
 	
-		knocker = game.add.sprite(game.world.centerX,game.world.centerY, 'dude');
-		//cop = game.add.sprite(game.rnd.integerInRange(100, 700), game.rnd.integerInRange(32, 200), 'cop');
 
-		game.physics.enable([knocker,balls], Phaser.Physics.ARCADE);
-
-		//knocker.body.immovable = true;
-		knocker.anchor.setTo(0.5,0.5);//new code
-		knocker.body.collideWorldBounds = true;
-		knocker.body.allowRotation= false;//new code
+		game.physics.enable([balls], Phaser.Physics.ARCADE);
 
 		//This gets it moving
 		balls.setAll('body.collideWorldBounds', true);
@@ -122,8 +109,6 @@ window.onload = function()
 	function update () {
 		//time
 		updateTime();
-		//score keeper
-		game.physics.arcade.collide(knocker, balls, hit, null, this);
 		// Enable physics between balls
 		game.physics.arcade.collide(balls);
 		balls.rotation = game.physics.arcade.moveToObject(sprite, 1000, 60, 500);
@@ -140,28 +125,12 @@ window.onload = function()
 		bullet.kill();
 		balls.kill();
 		
-		if(score>=0)
+		balls.reset(game.world.randomX, 0);
+		/*if(score>=0)
 		{
 			score -= 20;
 			scoreText.text = scoreString + score;
-		}
-		
-		/*if (score == 0)
-		{
-			scoreText.text = scoreString + score;
-			stateText.text = " You Died!";
-			stateText.visible = true;
 		}*/
-	}
-	
-	function hit (knocker, ball) {
-	
-		ball.kill();
-	
-		score += 20;
-
-		scoreText.text = 'score: ' + score;
-
 	}
 	
 	function updateTime()

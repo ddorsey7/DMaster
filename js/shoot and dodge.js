@@ -136,6 +136,8 @@ window.onload = function()
 		//shooter
 		sprite.rotation = game.physics.arcade.angleToPointer(sprite);
 		fire();
+		
+		game.physics.arcade.collide(knocker, bullets, hitByBullet, null, this);
 	}
 	
 	function hitByBullet (knocker, bullet) 
