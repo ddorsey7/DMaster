@@ -57,10 +57,7 @@ window.onload = function()
 		//  This creates a simple sprite that is using our loaded image and
 		//  displays it on-screen
 		//  and assign it to a variable
-		balls = game.add.group();//game.add.sprite(400, 200, 'ball');
-		//add multiple balls
-		//sprites = game.add.group();
-	
+		balls = game.add.group();
 		//text
 		// The score
 		score=0;
@@ -129,19 +126,19 @@ window.onload = function()
 		game.physics.arcade.collide(knocker, balls, hit, null, this);
 		// Enable physics between balls
 		game.physics.arcade.collide(balls);
-		//new code
-		knocker.rotation = game.physics.arcade.moveToPointer(knocker, 60, game.input.activePointer, 500);
-		//cop
-		
+		balls.rotation = game.physics.arcade.moveToObject(sprite, 1000, 60, 500);
 		//shooter
 		sprite.rotation = game.physics.arcade.angleToPointer(sprite);
-		fire();
-		game.physics.arcade.collide(knocker, bullets, hitByBullet, null, this);
+		
+		if(game.input.activePointer.isDown)
+			fire();
+		game.physics.arcade.collide(balls, bullets, hitByBullet, null, this);
 	}
 	
-	function hitByBullet (knocker, bullet) 
+	function hitByBullet (balls, bullet) 
 	{
 		bullet.kill();
+		balls.kill();
 		
 		if(score>=0)
 		{
