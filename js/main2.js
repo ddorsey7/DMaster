@@ -25,6 +25,8 @@ window.onload = function()
 		
 		game.load.image( 'cop', 'asserts/police.png');
 		
+		//bullet
+		
     }
     
     var bouncy;

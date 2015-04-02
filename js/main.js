@@ -207,11 +207,11 @@ window.onload = function()
 			
 			game.physics.enable(bullet, Phaser.Physics.ARCADE);
 			
-			game.physics.arcade.collide(knocker, bullet, hitByBullet, null, this);
+			//game.physics.arcade.collide(knocker, bullet, hitByBullet, null, this);
 			
 			nextFire=0;
 		}
-		
+		game.physics.arcade.collide(knocker, bullet, hitByBullet, null, this);
 		nextFire++;
 
 	}

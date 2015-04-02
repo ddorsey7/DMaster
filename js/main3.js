@@ -129,7 +129,6 @@ window.onload = function()
 		//cop.rotation = game.physics.arcade.moveToObject(cop, knocker, 15,500);
 		//Resets balls
 		balls.forEachAlive(checkBounds, this);
-		//music
 		
 	}
 	
@@ -193,12 +192,12 @@ window.onload = function()
 
     var ball = balls.getFirstExists(false);
 
-    if (ball)
-    {
-        ball.frame = game.rnd.integerInRange(0,6);
-        ball.exists = true;
-        ball.reset(game.world.randomX, 0);
-    }
+		if (ball)
+		{
+			ball.frame = game.rnd.integerInRange(0,6);
+			ball.exists = true;
+			ball.reset(game.world.randomX, 0);
+		}
 
-}
+	}
 };

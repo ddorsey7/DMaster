@@ -3,19 +3,20 @@ window.onload = function()
     "use strict";
     
     //var game = new Phaser.Game( 800, 600, Phaser.AUTO, 'game', { preload: preload, create: create, update: update } );
-	var game = new Phaser.Game(800, 600, Phaser.CANVAS, 'game', { preload: preload, create: create, update: update});// render: render });
+	var game = new Phaser.Game(1600, 1200, Phaser.CANVAS, 'game', { preload: preload, create: create, update: update});// render: render });
     
-    function preload() {
-        // Load an image and call it 'logo'.
-        game.load.image( 'ball', 'assets/ball.png' );
-		game.load.image( 'dude', 'assets/cat.png' );
-		game.load.image( 'box', 'assets/box.jpg' );
+    function preload() 
+	{
+        // Load an image and call it 'logo'
+		game.load.image( 'ball', 'assets/car.png' );
+		game.load.image( 'dude', 'assets/mycar.png' );
+		game.load.image( 'box', 'assets/street.png' );
 		
-		game.load.image( 'cop', 'asserts/police.png');
+		game.load.image( 'cop', 'assets/police.png');
 		
 		//shooter
-		game.load.image('arrow', 'assets/sprites/arrow.png');
-		game.load.image('bullet', 'assets/sprites/purple_ball.png');
+		game.load.image('arrow', 'assets/police.png');
+		game.load.image('bullet', 'assets/ball.png');
     }
     
     var bouncy;
@@ -34,6 +35,7 @@ window.onload = function()
 	var time;
 	var timeString="Time: ";
 	var timeText;
+	var startTime;
 	
 	var bg;
 	
@@ -46,7 +48,7 @@ window.onload = function()
 
 	function create() {
 		//background
-		bg = game.add.tileSprite(0, 0, 800, 600, 'box');
+		bg = game.add.tileSprite(0, 0, 1600, 1200, 'box');
 
 		game.physics.startSystem(Phaser.Physics.ARCADE);
 
@@ -61,19 +63,23 @@ window.onload = function()
 	
 		//text
 		// The score
-		score=1000;
-		scoreString = 'Life : ';
-		scoreText = game.add.text(10, 10, scoreString + score, { font: '34px Arial', fill: '#fff' });
+		score=0;
+		scoreString = 'Score: ';
+		scoreText = game.add.text(10, 10, scoreString + score, { font: '84px Arial', fill: '#fff' });
 		//Timer
+		startTime=game.time.time;
 		time=0;
-		timeText = game.add.text(500, 10, timeString + time, { font: '34px Arial', fill: '#fff' });
+		timeText = game.add.text(1100, 10, timeString + time, { font: '84px Arial', fill: '#fff' });
 		//  Text
 		stateText = game.add.text(game.world.centerX,game.world.centerY,' ', { font: '84px Arial', fill: '#fff' });
 		stateText.anchor.setTo(0.5, 0.5);
 		stateText.visible = false;
 		
+		//shoot
+		sprite = game.add.sprite(400, 300, 'arrow');
+		sprite.anchor.set(0.5);
 
-		for (var i = 0; i < 4; i++)
+		for (var i = 0; i < 10; i++)
 		{
 			var s = balls.create(game.rnd.integerInRange(100, 700), game.rnd.integerInRange(32, 200), 'ball');
 		
@@ -83,9 +89,9 @@ window.onload = function()
 		}
 	
 		knocker = game.add.sprite(game.world.centerX,game.world.centerY, 'dude');
-		cop = game.add.sprite(game.rnd.integerInRange(100, 700), game.rnd.integerInRange(32, 200), 'police');
+		//cop = game.add.sprite(game.rnd.integerInRange(100, 700), game.rnd.integerInRange(32, 200), 'cop');
 
-		game.physics.enable([sprite,knocker,balls], Phaser.Physics.ARCADE);
+		game.physics.enable([knocker,balls], Phaser.Physics.ARCADE);
 
 		//knocker.body.immovable = true;
 		knocker.anchor.setTo(0.5,0.5);//new code
@@ -106,10 +112,12 @@ window.onload = function()
 		bullets.createMultiple(50, 'bullet');
 		bullets.setAll('checkWorldBounds', true);
 		bullets.setAll('outOfBoundsKill', true);
-    
-		sprite = game.add.sprite(400, 300, 'arrow');
+		
+		
+		sprite = game.add.sprite(game.world.centerX,game.world.centerY, 'arrow');
 		sprite.anchor.set(0.5);
-
+		
+		game.physics.enable(sprite, Phaser.Physics.ARCADE);
 		sprite.body.allowRotation = false;
 	}
 
@@ -118,59 +126,93 @@ window.onload = function()
 		//time
 		updateTime();
 		//score keeper
-		game.physics.arcade.collide(knocker, balls, collisionHandler, null, this);
+		game.physics.arcade.collide(knocker, balls, hit, null, this);
 		// Enable physics between balls
 		game.physics.arcade.collide(balls);
 		//new code
 		knocker.rotation = game.physics.arcade.moveToPointer(knocker, 60, game.input.activePointer, 500);
+		//cop
 		
 		//shooter
 		sprite.rotation = game.physics.arcade.angleToPointer(sprite);
-		shoot();
+		fire();
 	}
 	
-	function collisionHandler (bullet, alien) 
+	function hitByBullet (knocker, bullet) 
 	{
-		if(score!=0)
+		bullet.kill();
+		
+		if(score>=0)
+		{
 			score -= 20;
+			scoreText.text = scoreString + score;
+		}
 		
-		scoreText.text = scoreString + score;
-		
-		if (score == 0)
+		/*if (score == 0)
 		{
 			scoreText.text = scoreString + score;
 			stateText.text = " You Died!";
 			stateText.visible = true;
-		}
+		}*/
+	}
+	
+	function hit (knocker, ball) {
+	
+		ball.kill();
+	
+		score += 20;
+
+		scoreText.text = 'score: ' + score;
+
 	}
 	
 	function updateTime()
 	{
 		
-		time = Math.floor(game.time.time / 1000) % 60;
-		timeText.text= "time: "+time + "/60";
+		time = (Math.floor((game.time.time-startTime) / 1000));// % 60);
+		if(time>60)
+			time-=60;
 		
-		if(time == 59)
+		timeText.text= "time: "+time + " secs";//60";
+		if (score>=1000)
 		{
-			stateText.text = "You Survived";
+			stateText.text = "You Won";
 			stateText.visible = true;
 		}
-		
+		if((time == 59)&(score>=1000))
+		{
+			stateText.text = "You Won";
+			stateText.visible = true;
+		}
+		if((time == 59)&(score<1000))
+		{
+			stateText.text = "You Lose";
+			stateText.visible = true;
+		}
 	}
 	
 	function fire() 
 	{
 
-		if (game.time.now > nextFire && bullets.countDead() > 0)
+		//if (game.time.now > nextFire && bullets.countDead() > 0)
+		if(nextFire==25)
 		{
-			nextFire = game.time.now + fireRate;
+			//nextFire = game.time.now + fireRate;
 
 			var bullet = bullets.getFirstDead();
 
 			bullet.reset(sprite.x - 8, sprite.y - 8);
 
 			game.physics.arcade.moveToPointer(bullet, 300);
+			
+			game.physics.enable(bullet, Phaser.Physics.ARCADE);
+			
+			game.physics.arcade.collide(knocker, bullet, hitByBullet, null, this);
+			
+			nextFire=0;
 		}
+		
+		nextFire++;
 
 	}
 };
