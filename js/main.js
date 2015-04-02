@@ -118,6 +118,7 @@ window.onload = function()
 		if(game.input.activePointer.isDown)
 			fire();
 		game.physics.arcade.collide(balls, bullets, hitByBullet, null, this);
+		game.physics.arcade.collide(balls, sprite, collision, null, this);
 	}
 	
 	function hitByBullet (balls, bullet) 
@@ -126,34 +127,29 @@ window.onload = function()
 		balls.kill();
 		
 		balls.reset(game.world.randomX, 0);
-		/*if(score>=0)
-		{
-			score -= 20;
-			scoreText.text = scoreString + score;
-		}*/
+		game.physics.enable(balls, Phaser.Physics.ARCADE);
+		balls.body.velocity.x = game.rnd.integerInRange(-400, 400);
+		balls.body.velocity.y = game.rnd.integerInRange(-400, 400);
+	}
+	
+	function collision (balls, sprite)
+	{
+		sprite.kill();
+		stateText.text = "You Died!!!";
+		stateText.visible = true;
 	}
 	
 	function updateTime()
 	{
 		
 		time = (Math.floor((game.time.time-startTime) / 1000));// % 60);
-		if(time>60)
+		if(time==60)
 			time-=60;
 		
 		timeText.text= "time: "+time + " secs";//60";
-		if (score>=1000)
+		if (time==59)
 		{
-			stateText.text = "You Won";
-			stateText.visible = true;
-		}
-		if((time == 59)&(score>=1000))
-		{
-			stateText.text = "You Won";
-			stateText.visible = true;
-		}
-		if((time == 59)&(score<1000))
-		{
-			stateText.text = "You Lose";
+			stateText.text = "You Survived!";
 			stateText.visible = true;
 		}
 	}
