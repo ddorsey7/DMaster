@@ -9,7 +9,7 @@ window.onload = function()
 	{
         // Load an image and call it 'logo'
 		game.load.image( 'ball', 'assets/virus.png' );
-		game.load.image( 'box', 'assets/bloodflow.jpeg' );
+		game.load.image( 'box', 'assets/bloodflow.jpg' );
 		
 		//shooter
 		game.load.image('arrow', 'assets/wc.png');
@@ -60,9 +60,9 @@ window.onload = function()
 		//Timer
 		startTime=game.time.time;
 		time=0;
-		timeText = game.add.text(1100, 10, timeString + time, { font: '168px Arial', fill: '#fff' });
+		timeText = game.add.text(1100, 10, timeString + time, { font: '84px Arial', fill: '#fff' });
 		//  Text
-		stateText = game.add.text(game.world.centerX,game.world.centerY,' ', { font: '84px Arial', fill: '#fff' });
+		stateText = game.add.text(game.world.centerX,game.world.centerY,' ', { font: '168px Arial', fill: '#fff' });
 		stateText.anchor.setTo(0.5, 0.5);
 		stateText.visible = false;
 		
