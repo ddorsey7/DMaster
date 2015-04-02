@@ -63,7 +63,7 @@ window.onload = function()
 		//Timer
 		startTime=game.time.time;
 		time=0;
-		timeText = game.add.text(1100, 10, timeString + time, { font: '84px Arial', fill: '#fff' });
+		timeText = game.add.text(1100, 10, timeString + time, { font: '168px Arial', fill: '#fff' });
 		//  Text
 		stateText = game.add.text(game.world.centerX,game.world.centerY,' ', { font: '84px Arial', fill: '#fff' });
 		stateText.anchor.setTo(0.5, 0.5);
@@ -135,6 +135,7 @@ window.onload = function()
 	function collision (balls, sprite)
 	{
 		sprite.kill();
+		sprite.visible= false;
 		stateText.text = "You Died!!!";
 		stateText.visible = true;
 	}
@@ -158,7 +159,7 @@ window.onload = function()
 	{
 
 		//if (game.time.now > nextFire && bullets.countDead() > 0)
-		if(nextFire==25)
+		if(nextFire==15)
 		{
 			//nextFire = game.time.now + fireRate;
 
