@@ -8,12 +8,12 @@ window.onload = function()
     function preload() 
 	{
         // Load an image and call it 'logo'
-		game.load.image( 'ball', 'assets/car.png' );
-		game.load.image( 'box', 'assets/street.png' );
+		game.load.image( 'ball', 'assets/virus.png' );
+		game.load.image( 'box', 'assets/bloodflow.jpeg' );
 		
 		//shooter
-		game.load.image('arrow', 'assets/police.png');
-		game.load.image('bullet', 'assets/ball.png');
+		game.load.image('arrow', 'assets/wc.png');
+		game.load.image('bullet', 'assets/wcp.png');
     }
     
     var bouncy;
@@ -57,9 +57,6 @@ window.onload = function()
 		balls = game.add.group();
 		//text
 		// The score
-		score=0;
-		scoreString = 'Score: ';
-		scoreText = game.add.text(10, 10, scoreString + score, { font: '84px Arial', fill: '#fff' });
 		//Timer
 		startTime=game.time.time;
 		time=0;
