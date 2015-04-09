@@ -117,7 +117,7 @@ window.onload = function()
 		game.physics.arcade.collide(balls);
 		balls.rotation = game.physics.arcade.moveToObject(sprite, 1000, 60, 500);
 		//shooter
-		//sprite.rotation = game.physics.arcade.angleToPointer(sprite);
+		sprite.rotation = game.physics.arcade.angleToPointer(sprite);
 		
 		if(game.input.activePointer.isDown)
 			fire();
