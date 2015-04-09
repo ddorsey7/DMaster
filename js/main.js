@@ -55,14 +55,14 @@ window.onload = function()
 		//physics
 		game.physics.startSystem(Phaser.Physics.ARCADE);
 		game.physics.arcade.gravity.y = 200;
-		game.time.events.loop(150, fire, this);
+		game.time.events.loop(150, fall, this);
 		
 		//cursors
 		cursors = game.input.keyboard.createCursorKeys();
     
 		// ball group
 		balls = game.add.group();
-		
+		balls.createMultiple(3, 'ball', 0, false);
 		//Timer
 		startTime=game.time.time;
 		time=0;
@@ -179,7 +179,7 @@ window.onload = function()
 
 			bullet.reset(sprite.x - 8, sprite.y - 8);
 
-			game.physics.arcade.moveToPointer(bullet, 300);
+			bullet.body.velocity.y = -300;
 			
 			game.physics.enable(bullet, Phaser.Physics.ARCADE);
 			
