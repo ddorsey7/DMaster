@@ -14,6 +14,8 @@ window.onload = function()
 		//shooter
 		game.load.image('arrow', 'assets/wc.png');
 		game.load.image('bullet', 'assets/wcp.png');
+		
+		game.load.audio('boden', 'assets/Survival.m4a');
     }
     
     var bouncy;
@@ -42,6 +44,9 @@ window.onload = function()
 
 	var fireRate = 100;
 	var nextFire = 0;
+	
+	//keyboard
+	var cursors;
 
 	function create() {
 		//background
@@ -55,8 +60,7 @@ window.onload = function()
 		//  displays it on-screen
 		//  and assign it to a variable
 		balls = game.add.group();
-		//text
-		// The score
+		
 		//Timer
 		startTime=game.time.time;
 		time=0;
@@ -100,6 +104,9 @@ window.onload = function()
 		
 		game.physics.enable(sprite, Phaser.Physics.ARCADE);
 		sprite.body.allowRotation = false;
+		
+		//cursors
+		cursors = game.input.keyboard.createCursorKeys();
 	}
 
 	//Move the knocker with the arrow keys
@@ -116,6 +123,24 @@ window.onload = function()
 			fire();
 		game.physics.arcade.collide(balls, bullets, hitByBullet, null, this);
 		game.physics.arcade.collide(balls, sprite, collision, null, this);
+		
+		//controls
+		if (cursors.left.isDown)
+		{
+			sprite.body.velocity.x = -300;
+		}
+		else if (cursors.right.isDown)
+		{
+			sprite.body.velocity.x = 300;
+		}
+		else if (cursors.down.isDown)
+		{
+			sprite.body.velocity.y = -300;
+		}
+		else if (cursors.up.isDown)
+		{
+			sprite.body.velocity.y = 300;
+		}
 	}
 	
 	function hitByBullet (balls, bullet) 
