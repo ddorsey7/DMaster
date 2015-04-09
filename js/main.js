@@ -213,8 +213,8 @@ window.onload = function()
 			ball.kill();
 			ball.reset(game.world.randomX, 0);
 			game.physics.enable(balls, Phaser.Physics.ARCADE);
-			balls.body.velocity.x = game.rnd.integerInRange(-400, 400);
-			balls.body.velocity.y = game.rnd.integerInRange(-400, 400);
+			ball.body.velocity.x = game.rnd.integerInRange(-400, 400);
+			ball.body.velocity.y = game.rnd.integerInRange(-400, 400);
 		}
 
 	}
