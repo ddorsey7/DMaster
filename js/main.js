@@ -127,10 +127,12 @@ window.onload = function()
 		//controls
 		if (cursors.left.isDown)
 		{
+			sprite.body.velocity.y = 0;
 			sprite.body.velocity.x = -300;
 		}
 		else if (cursors.right.isDown)
 		{
+			sprite.body.velocity.y = 0;
 			sprite.body.velocity.x = 300;
 		}
 		if (cursors.down.isDown)
@@ -206,10 +208,13 @@ window.onload = function()
 	}
 	function checkBounds(ball) {
 
-		if (ball.y > 1200)
+		if (ball.y > 1200 || ball.x > 18000)
 		{
 			ball.kill();
 			ball.reset(game.world.randomX, 0);
+			game.physics.enable(balls, Phaser.Physics.ARCADE);
+			balls.body.velocity.x = game.rnd.integerInRange(-400, 400);
+			balls.body.velocity.y = game.rnd.integerInRange(-400, 400);
 		}
 
 	}
