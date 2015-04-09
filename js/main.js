@@ -158,8 +158,6 @@ window.onload = function()
 	{
 		
 		time = (Math.floor((game.time.time-startTime) / 1000));// % 60);
-		if(time==60)
-			time-=60;
 		
 		timeText.text= "time: "+time + " secs";//60";
 		if (time==59)
@@ -184,6 +182,7 @@ window.onload = function()
 			bullet.body.velocity.y = -300;
 			
 			game.physics.enable(bullet, Phaser.Physics.ARCADE);
+			bullet.body.allowGravity=0;
 			
 			//game.physics.arcade.collide(knocker, bullet, hitByBullet, null, this);
 			
