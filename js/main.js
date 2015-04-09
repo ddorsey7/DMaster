@@ -84,7 +84,7 @@ window.onload = function()
 		game.physics.enable([balls], Phaser.Physics.ARCADE);
 
 		//This gets it moving
-		//balls.setAll('body.collideWorldBounds', true);
+		balls.setAll('body.collideWorldBounds', true);
 		balls.setAll('body.bounce.x', 1);
 		balls.setAll('body.bounce.y', 1);
 		balls.setAll('body.minBounceVelocity', 0);
@@ -208,7 +208,7 @@ window.onload = function()
 	}
 	function checkBounds(ball) {
 
-		if (ball.y > 1200 || ball.x > 1600)
+		if (ball.y == 1200 || ball.x == 1600)
 		{
 			ball.kill();
 			ball.reset(game.world.randomX, 0);
