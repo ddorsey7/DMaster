@@ -84,7 +84,7 @@ window.onload = function()
 		game.physics.enable([balls], Phaser.Physics.ARCADE);
 
 		//This gets it moving
-		balls.setAll('body.collideWorldBounds', true);
+		//balls.setAll('body.collideWorldBounds', true);
 		balls.setAll('body.bounce.x', 1);
 		balls.setAll('body.bounce.y', 1);
 		balls.setAll('body.minBounceVelocity', 0);
@@ -133,14 +133,17 @@ window.onload = function()
 		{
 			sprite.body.velocity.x = 300;
 		}
-		else if (cursors.down.isDown)
-		{
-			sprite.body.velocity.y = -300;
-		}
-		else if (cursors.up.isDown)
+		if (cursors.down.isDown)
 		{
 			sprite.body.velocity.y = 300;
 		}
+		else if (cursors.up.isDown)
+		{
+			sprite.body.velocity.y = -300;
+		}
+		
+		//Resets balls
+		balls.forEachAlive(checkBounds, this);
 	}
 	
 	function hitByBullet (balls, bullet) 
@@ -199,6 +202,15 @@ window.onload = function()
 		}
 		
 		nextFire++;
+
+	}
+	function checkBounds(ball) {
+
+		if (ball.y > 1200)
+		{
+			ball.kill();
+			ball.reset(game.world.randomX, 0);
+		}
 
 	}
 };
