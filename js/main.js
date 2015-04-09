@@ -8,12 +8,12 @@ window.onload = function()
     function preload() 
 	{
         // Load an image and call it 'logo'
-		game.load.image( 'ball', 'assets/virus.png' );
-		game.load.image( 'box', 'assets/bloodflow.jpg' );
+		game.load.image( 'ball', 'assets/ast.png' );
+		game.load.image( 'box', 'assets/space.jpg' );
 		
 		//shooter
 		game.load.image('arrow', 'assets/wc.png');
-		game.load.image('bullet', 'assets/wcp.png');
+		game.load.image('bullet', 'assets/rocket.png');
 		
 		game.load.audio('boden', 'assets/Survival.m4a');
     }
@@ -62,7 +62,7 @@ window.onload = function()
     
 		// ball group
 		balls = game.add.group();
-		balls.createMultiple(3, 'ball', 0, false);
+		balls.createMultiple(5, 'ball', 0, false);
 		//Timer
 		startTime=game.time.time;
 		time=0;
@@ -93,6 +93,10 @@ window.onload = function()
 		
 		//cursors
 		cursors = game.input.keyboard.createCursorKeys();
+		
+		//music
+		music = game.add.audio('boden');
+		music.play();
 	}
 
 	//Move the knocker with the arrow keys
@@ -141,8 +145,6 @@ window.onload = function()
 		
 		balls.reset(game.world.randomX, 0);
 		game.physics.enable(balls, Phaser.Physics.ARCADE);
-		balls.body.velocity.x = game.rnd.integerInRange(-400, 400);
-		balls.body.velocity.y = game.rnd.integerInRange(-400, 400);
 	}
 	
 	function collision (balls, sprite)
@@ -197,9 +199,7 @@ window.onload = function()
 		{
 			ball.kill();
 			ball.reset(game.world.randomX, 0);
-			game.physics.enable(balls, Phaser.Physics.ARCADE);
-			ball.body.velocity.x = game.rnd.integerInRange(-400, 400);
-			ball.body.velocity.y = game.rnd.integerInRange(-400, 400);
+			game.physics.enable(ball, Phaser.Physics.ARCADE);
 		}
 
 	}
@@ -212,6 +212,7 @@ window.onload = function()
 			ball.frame = game.rnd.integerInRange(0,6);
 			ball.exists = true;
 			ball.reset(game.world.randomX, 0);
+			game.physics.enable(ball, Phaser.Physics.ARCADE);
 		}
 
 	}
