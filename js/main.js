@@ -208,7 +208,7 @@ window.onload = function()
 	}
 	function checkBounds(ball) {
 
-		if (ball.y > 1200 || ball.x > 18000)
+		if (ball.y > 1200 || ball.x > 1600)
 		{
 			ball.kill();
 			ball.reset(game.world.randomX, 0);
