@@ -12,8 +12,8 @@ window.onload = function()
 		game.load.image( 'box', 'assets/space.jpg' );
 		
 		//shooter
-		game.load.image('arrow', 'assets/wc.png');
-		game.load.image('bullet', 'assets/rocket.png');
+		game.load.image('arrow', 'assets/rocket.png');
+		game.load.image('bullet', 'assets/ball.png');
 		
 		game.load.audio('boden', 'assets/Survival.m4a');
     }
@@ -54,7 +54,7 @@ window.onload = function()
 		
 		//physics
 		game.physics.startSystem(Phaser.Physics.ARCADE);
-		game.physics.arcade.gravity.y = 200;
+		game.physics.arcade.gravity.y = 400;
 		game.time.events.loop(150, fall, this);
 		
 		//cursors
