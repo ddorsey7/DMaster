@@ -51,14 +51,16 @@ window.onload = function()
 	function create() {
 		//background
 		bg = game.add.tileSprite(0, 0, 1600, 1200, 'box');
-
+		
+		//physics
 		game.physics.startSystem(Phaser.Physics.ARCADE);
-
+		game.physics.arcade.gravity.y = 200;
+		game.time.events.loop(150, fire, this);
+		
+		//cursors
 		cursors = game.input.keyboard.createCursorKeys();
     
-		//  This creates a simple sprite that is using our loaded image and
-		//  displays it on-screen
-		//  and assign it to a variable
+		// ball group
 		balls = game.add.group();
 		
 		//Timer
@@ -69,27 +71,10 @@ window.onload = function()
 		stateText = game.add.text(game.world.centerX,game.world.centerY,' ', { font: '168px Arial', fill: '#fff' });
 		stateText.anchor.setTo(0.5, 0.5);
 		stateText.visible = false;
-		
-
-		for (var i = 0; i < 10; i++)
-		{
-			var s = balls.create(game.rnd.integerInRange(100, 700), game.rnd.integerInRange(32, 200), 'ball');
-		
-			game.physics.enable(s, Phaser.Physics.ARCADE);
-			s.body.velocity.x = game.rnd.integerInRange(-400, 400);
-			s.body.velocity.y = game.rnd.integerInRange(-400, 400);
-		}
 	
-
 		game.physics.enable([balls], Phaser.Physics.ARCADE);
-
-		//This gets it moving
-		balls.setAll('body.collideWorldBounds', true);
-		balls.setAll('body.bounce.x', 1);
-		balls.setAll('body.bounce.y', 1);
-		balls.setAll('body.minBounceVelocity', 0);
 		
-		//shooter
+		//bullets
 		bullets = game.add.group();
 		bullets.enableBody = true;
 		bullets.physicsBodyType = Phaser.Physics.ARCADE;
@@ -98,12 +83,13 @@ window.onload = function()
 		bullets.setAll('checkWorldBounds', true);
 		bullets.setAll('outOfBoundsKill', true);
 		
-		
+		//shooter
 		sprite = game.add.sprite(game.world.centerX,game.world.centerY, 'arrow');
 		sprite.anchor.set(0.5);
 		
 		game.physics.enable(sprite, Phaser.Physics.ARCADE);
 		sprite.body.allowRotation = false;
+		sprite.body.allowGravity = 0;
 		
 		//cursors
 		cursors = game.input.keyboard.createCursorKeys();
@@ -162,7 +148,6 @@ window.onload = function()
 	function collision (balls, sprite)
 	{
 		sprite.kill();
-		sprite.visible= false;
 		stateText.text = "You Died!!!";
 		stateText.visible = true;
 	}
@@ -208,13 +193,25 @@ window.onload = function()
 	}
 	function checkBounds(ball) {
 
-		if (ball.y == 1200 || ball.x == 1600)
+		if (ball.y >1200)
 		{
 			ball.kill();
 			ball.reset(game.world.randomX, 0);
 			game.physics.enable(balls, Phaser.Physics.ARCADE);
 			ball.body.velocity.x = game.rnd.integerInRange(-400, 400);
 			ball.body.velocity.y = game.rnd.integerInRange(-400, 400);
+		}
+
+	}
+	function fall() {
+
+    var ball = balls.getFirstExists(false);
+
+		if (ball)
+		{
+			ball.frame = game.rnd.integerInRange(0,6);
+			ball.exists = true;
+			ball.reset(game.world.randomX, 0);
 		}
 
 	}
