@@ -36,6 +36,10 @@ window.onload = function()
 	var timeText;
 	var startTime;
 	
+	//life
+	var life;
+	var lifeText"Life: ";
+	
 	var bg;
 	
 	//shooter
@@ -71,6 +75,9 @@ window.onload = function()
 		stateText = game.add.text(game.world.centerX,game.world.centerY,' ', { font: '168px Arial', fill: '#fff' });
 		stateText.anchor.setTo(0.5, 0.5);
 		stateText.visible = false;
+		//life
+		life=0;
+		lifeText = game.add.text(0, 10, timeString + time, { font: '84px Arial', fill: '#fff' });
 	
 		game.physics.enable([balls], Phaser.Physics.ARCADE);
 		
@@ -151,11 +158,19 @@ window.onload = function()
 		game.physics.enable(balls, Phaser.Physics.ARCADE);
 	}
 	
-	function collision (balls, sprite)
+	function collision (balls, spr)
 	{
-		sprite.kill();
-		stateText.text = "You Died!!!";
-		stateText.visible = true;
+		spr.kill();
+		
+		if(life>0)
+			life--;
+		
+		if(life==0)
+		{
+			stateText.text = "You Died!!!";
+			stateText.visible = true;
+		}
+		
 	}
 	
 	function updateTime()
@@ -171,6 +186,10 @@ window.onload = function()
 		}
 	}
 	
+	function updateLife()
+	{
+		lifeText.text = "Life: "+life;
+	}
 	function fire() 
 	{
 
