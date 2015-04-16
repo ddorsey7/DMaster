@@ -38,7 +38,7 @@ window.onload = function()
 	
 	//life
 	var life;
-	var lifeText"Life: ";
+	var lifeText="Life: ";
 	
 	var bg;
 	
