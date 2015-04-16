@@ -76,7 +76,7 @@ window.onload = function()
 		stateText.anchor.setTo(0.5, 0.5);
 		stateText.visible = false;
 		//life
-		life=0;
+		life=3;
 		lifeText = game.add.text(0, 10, timeString + time, { font: '84px Arial', fill: '#fff' });
 	
 		game.physics.enable([balls], Phaser.Physics.ARCADE);
@@ -91,7 +91,7 @@ window.onload = function()
 		bullets.setAll('outOfBoundsKill', true);
 		
 		//shooter
-		sprite = game.add.sprite(game.world.centerX,game.world.centerY+100, 'arrow');
+		sprite = game.add.sprite(game.world.centerX,1100, 'arrow');
 		sprite.anchor.set(0.5);
 		
 		game.physics.enable(sprite, Phaser.Physics.ARCADE);
@@ -114,6 +114,8 @@ window.onload = function()
 		
 		//time
 		updateTime();
+		//life
+		updateLife();
 		// Enable physics between balls
 		game.physics.arcade.collide(balls);
 		balls.rotation = game.physics.arcade.moveToObject(sprite, 1000, 60, 500);
