@@ -103,7 +103,7 @@ window.onload = function()
 	function update () {
 		
 		//  Scroll the background
-		bg.tilePosition.y += 2;
+		bg.tilePosition.y += 4;
 		
 		//time
 		updateTime();
@@ -113,8 +113,7 @@ window.onload = function()
 		//shooter
 		//sprite.rotation = game.physics.arcade.angleToPointer(sprite);
 		
-		if(game.input.activePointer.isDown)
-			fire();
+		
 		game.physics.arcade.collide(balls, bullets, hitByBullet, null, this);
 		game.physics.arcade.collide(balls, sprite, collision, null, this);
 		
@@ -131,12 +130,13 @@ window.onload = function()
 		}
 		if (cursors.down.isDown)
 		{
-			sprite.body.velocity.y = 300;
+			fire();
+			//sprite.body.velocity.y = 300;
 		}
-		else if (cursors.up.isDown)
+		/*else if (cursors.up.isDown)
 		{
 			sprite.body.velocity.y = -300;
-		}
+		}*/
 		
 		//Resets balls
 		balls.forEachAlive(checkBounds, this);
