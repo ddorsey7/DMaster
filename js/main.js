@@ -101,6 +101,10 @@ window.onload = function()
 
 	//Move the knocker with the arrow keys
 	function update () {
+		
+		//  Scroll the background
+		bg.tilePosition.y += 2;
+		
 		//time
 		updateTime();
 		// Enable physics between balls
