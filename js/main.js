@@ -84,7 +84,7 @@ window.onload = function()
 		bullets.setAll('outOfBoundsKill', true);
 		
 		//shooter
-		sprite = game.add.sprite(game.world.centerX,game.world.centerY, 'arrow');
+		sprite = game.add.sprite(game.world.centerX,game.world.centerY+10, 'arrow');
 		sprite.anchor.set(0.5);
 		
 		game.physics.enable(sprite, Phaser.Physics.ARCADE);
