@@ -165,14 +165,16 @@ window.onload = function()
 	
 	function heightLimit(bat) {
 		
-		score -= 20;
 		
-		scoreText.text = 'score: ' + score;
 		
 		if(bat.y <= 300)
 		{
 			bat.kill();
 			bat.reset(game.world.randomX, 590);
+			
+			score -= 20;
+		
+			scoreText.text = 'score: ' + score;
 		}
 		
 	}
