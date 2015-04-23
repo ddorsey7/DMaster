@@ -104,7 +104,14 @@ window.onload = function()
 		
 		//moving cards
 		moveRight(joker);
+		moveRight(love);
 		moveLeft(joker2);
+		moveLeft(harley);
+		
+		game.physics.arcade.collide(ball, joker, hitRight, null, this);
+		game.physics.arcade.collide(ball, love, hitRight, null, this);
+		game.physics.arcade.collide(ball, joker2, hitLeft, null, this);
+		game.physics.arcade.collide(ball, harley, hitLeft, null, this);
 		
 		if (catchFlag == true)
 		{
@@ -148,4 +155,21 @@ window.onload = function()
 		if(card.x < 0)
 			card.reset(game.world.randomX, 50);
 	}
+	
+	function hitRight (bat, card) 
+	{
+		card.kill();
+		bat.kill();
+		card.reset(game.world.randomX, 150);
+		bat.reset(game.world.randomX, 590);
+	}
+	
+	function hitLeft (bat, card) 
+	{
+		card.kill();
+		bat.kill();
+		card.reset(game.world.randomX, 50);
+		bat.reset(game.world.randomX, 590);
+	}
+	
 };
