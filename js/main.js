@@ -193,6 +193,10 @@ window.onload = function()
 		ball.kill();
 		card.reset(game.world.randomX, 150);
 		ball.reset(game.world.randomX, 590);
+		
+		score += 20;
+
+		scoreText.text = 'score: ' + score;
 	}
 	
 	function hitLeft (ball, card) 
@@ -201,6 +205,10 @@ window.onload = function()
 		ball.kill();
 		card.reset(game.world.randomX, 50);
 		ball.reset(game.world.randomX, 590);
+		
+		score += 20;
+
+		scoreText.text = 'score: ' + score;
 	}
 	
 };
