@@ -52,11 +52,15 @@ window.onload = function()
 		//Timer
 		startTime=game.time.time;
 		time=0;
-		timeText = game.add.text(1100, 10, timeString + time, { font: '84px Arial', fill: '#fff' });
+		timeText = game.add.text(590, 10, timeString + time, { font: '84px Arial', fill: '#fff' });
 		//  Text
 		stateText = game.add.text(game.world.centerX,game.world.centerY,' ', { font: '168px Arial', fill: '#fff' });
 		stateText.anchor.setTo(0.5, 0.5);
 		stateText.visible = false;
+		// The score
+		score=0;
+		scoreString = 'Score : ';
+		scoreText = game.add.text(10, 10, scoreString + score, { font: '68px Arial', fill: '#fff' });
 		
 		game.physics.enable([joker, joker2, love, harley], Phaser.Physics.ARCADE);
 		joker.body.allowGravity = false;
