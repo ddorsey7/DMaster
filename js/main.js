@@ -40,6 +40,10 @@ window.onload = function()
 		love = game.add.sprite(0, 150, 'madPic');
 		
 		game.physics.enable([joker, joker2, love, harley], Phaser.Physics.ARCADE);
+		joker.body.allowGravity = false;
+		joker2.body.allowGravity = false;
+		harley.body.allowGravity = false;
+		love.body.allowGravity = false;
 
 		// set global gravity
 		game.physics.arcade.gravity.y = 200;
