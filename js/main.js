@@ -45,14 +45,14 @@ window.onload = function()
 		
 		bg = game.add.tileSprite(0, 0, 800, 600, 'city');
 		joker = game.add.sprite(0, 150, 'jokerPic');
-		joker2 = game.add.sprite(700, 50, 'jokerPic');
+		//joker2 = game.add.sprite(700, 50, 'jokerPic');
 		harley = game.add.sprite(700, 150, 'harleyPic' );
-		love = game.add.sprite(0, 150, 'madPic');
+		//love = game.add.sprite(0, 150, 'madPic');
 		
 		//Timer
-		startTime=game.time.time;
+		/*startTime=game.time.time;
 		time=0;
-		timeText = game.add.text(570, 10, timeString + time, { font: '42px Arial', fill: '#fff' });
+		timeText = game.add.text(570, 10, timeString + time, { font: '42px Arial', fill: '#fff' });*/
 		//  Text
 		stateText = game.add.text(game.world.centerX,game.world.centerY,' ', { font: '168px Arial', fill: '#fff' });
 		stateText.anchor.setTo(0.5, 0.5);
@@ -62,19 +62,16 @@ window.onload = function()
 		scoreString = 'Score : ';
 		scoreText = game.add.text(10, 10, scoreString + score, { font: '42px Arial', fill: '#fff' });
 		
-		game.physics.enable([joker, joker2, love, harley], Phaser.Physics.ARCADE);
+		game.physics.enable([joker, harley], Phaser.Physics.ARCADE);
 		joker.body.allowGravity = false;
-		joker2.body.allowGravity = false;
+		//joker2.body.allowGravity = false;
 		harley.body.allowGravity = false;
-		love.body.allowGravity = false;
+		//love.body.allowGravity = false;
 
 		// set global gravity
 		game.physics.arcade.gravity.y = 200;
 		game.stage.backgroundColor = '#0072bc';
 		
-		var graphics = game.add.graphics(0,0);
-		graphics.beginFill(0x049e0c);
-		graphics.drawRect(395, 350, 10, 250);
 		
 		arrow = game.add.sprite(400, 350, 'arrow');
 
@@ -135,13 +132,13 @@ window.onload = function()
 		
 		//moving cards
 		moveRight(joker);
-		moveRight(love);
-		moveLeft(joker2);
+		//moveRight(love);
+		//moveLeft(joker2);
 		moveLeft(harley);
 		
 		game.physics.arcade.collide(ball, joker, 	hitRight, 	null, this);
-		game.physics.arcade.collide(ball, love, 	hitRight, 	null, this);
-		game.physics.arcade.collide(ball, joker2, 	hitLeft, 	null, this);
+		//game.physics.arcade.collide(ball, love, 	hitRight, 	null, this);
+		//game.physics.arcade.collide(ball, joker2, 	hitLeft, 	null, this);
 		game.physics.arcade.collide(ball, harley, 	hitLeft, 	null, this);
 		
 		if (catchFlag == true)
@@ -167,6 +164,11 @@ window.onload = function()
 	}
 	
 	function heightLimit(bat) {
+		
+		score -= 20;
+		
+		scoreText.text = 'score: ' + score;
+		
 		if(bat.y <= 300)
 		{
 			bat.kill();
@@ -176,13 +178,13 @@ window.onload = function()
 	}
 	
 	function moveRight(card){
-		card.x += 5;
+		card.x += 10;
 		if(card.x >= 800)
 			card.reset(game.world.randomX, 150);
 	}
 	
 	function moveLeft(card){
-		card.x += -5;
+		card.x += -10;
 		if(card.x < 0)
 			card.reset(game.world.randomX, 50);
 	}
