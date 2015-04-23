@@ -7,7 +7,7 @@ window.onload = function()
 
     //game.load.image('analog', 'assets/tests/fusia.png');
     game.load.image('arrow', 'assets/arrow.png');
-    game.load.image('ball', 'assets/ball.png');    
+    game.load.image('ball', 'assets/bat.png');    
 
 	}
 
