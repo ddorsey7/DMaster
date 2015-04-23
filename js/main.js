@@ -7,7 +7,11 @@ window.onload = function()
 
     //game.load.image('analog', 'assets/tests/fusia.png');
     game.load.image('arrow', 'assets/arrow.png');
-    game.load.image('ball', 'assets/bat.png');    
+    game.load.image('ball', 'assets/bat.png');
+	game.load.image('city', 'assets/gotham.jpg');
+	game.load.image('ball', 'assets/harley.png');
+	game.load.image('ball', 'assets/joker.png');
+	game.load.image('ball', 'assets/MadLove.png');
 
 	}
 
@@ -17,10 +21,13 @@ window.onload = function()
 	var launchVelocity = 0;
 	var Xvector;
 	var Yvector;
+	var bg;
 
 	function create() {
 
 		game.physics.startSystem(Phaser.Physics.ARCADE);
+		
+		bg = game.add.tileSprite(0, 0, 800, 600, 'city');
 
 		// set global gravity
 		game.physics.arcade.gravity.y = 200;
@@ -118,7 +125,7 @@ window.onload = function()
 	}
 	
 	function heightLimit(bat) {
-		if(bat.y <= 500)
+		if(bat.y <= 300)
 		{
 			bat.kill();
 			bat.reset(game.world.randomX, 590);
