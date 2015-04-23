@@ -90,7 +90,7 @@ window.onload = function()
 
 		arrow.rotation = game.physics.arcade.angleBetween(arrow, ball);
 		
-		ball.body.rotateLeft(50);
+		ball.rotation += 50;
 		
 		if (catchFlag == true)
 		{
