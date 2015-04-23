@@ -102,9 +102,8 @@ window.onload = function()
 		
 		reset(ball);
 		
-		joker.x += 5;
-		if(joker.x >= 800)
-			joker.reset(0,game.world.randomX);
+		//moving cards
+		moveRight(joker);
 		
 		if (catchFlag == true)
 		{
@@ -135,5 +134,17 @@ window.onload = function()
 			bat.reset(game.world.randomX, 590);
 		}
 		
+	}
+	
+	function moveRight(card){
+		card.x += 10;
+		if(card.x >= 800)
+			card.reset(game.world.randomX, 0);
+	}
+	
+	function moveLeft(card){
+		card.x += -10;
+		if(card.x < 0)
+			card.reset(game.world.randomX, 0);
 	}
 };
