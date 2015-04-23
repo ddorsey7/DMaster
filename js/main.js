@@ -6,7 +6,7 @@ window.onload = function()
 	function preload() {
 
     //game.load.image('analog', 'assets/tests/fusia.png');
-    game.load.image('arrow', 'assets/rocket.png');
+    game.load.image('arrow', 'assets/arrow.png');
     game.load.image('ball', 'assets/ball.png');    
 
 	}
