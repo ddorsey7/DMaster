@@ -98,9 +98,9 @@ window.onload = function()
 		
 		reset(ball);
 		
-		joker.x += 5;
-		if(joker.x >= 800)
-			joker.reset(0,game.world.randomX);
+		//joker.x += 5;
+		/*if(joker.x >= 800)
+			joker.reset(0,game.world.randomX);*/
 		
 		if (catchFlag == true)
 		{
