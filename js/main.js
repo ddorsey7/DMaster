@@ -69,6 +69,7 @@ window.onload = function()
 		ball.body.velocity.setTo(0, 0);
 		ball.body.allowGravity = false;
 		catchFlag = true;
+		heightLimit(ball);
 
 	}
 
@@ -111,6 +112,15 @@ window.onload = function()
 	
 	function reset(bat) {
 		if(bat.y <= 50)
+		{
+			bat.kill();
+			bat.reset(game.world.randomX, 590);
+		}
+		
+	}
+	
+	function heightLimit(bat) {
+		if(bat.y <= 500)
 		{
 			bat.kill();
 			bat.reset(game.world.randomX, 590);
