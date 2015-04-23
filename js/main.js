@@ -180,13 +180,13 @@ window.onload = function()
 	}
 	
 	function moveRight(card){
-		card.x += 10;
+		card.x += 5;
 		if(card.x >= 800)
 			card.reset(game.world.randomX, 150);
 	}
 	
 	function moveLeft(card){
-		card.x += -10;
+		card.x += -5;
 		if(card.x < 0)
 			card.reset(game.world.randomX, 50);
 	}
