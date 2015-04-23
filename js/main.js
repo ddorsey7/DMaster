@@ -90,6 +90,8 @@ window.onload = function()
 
 		arrow.rotation = game.physics.arcade.angleBetween(arrow, ball);
 		
+		ball.body.rotateLeft(50);
+		
 		if (catchFlag == true)
 		{
 			//  Track the ball sprite to the mouse  
