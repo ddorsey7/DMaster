@@ -9,9 +9,9 @@ window.onload = function()
     game.load.image('arrow', 'assets/arrow.png');
     game.load.image('ball', 'assets/bat.png');
 	game.load.image('city', 'assets/gotham.jpg');
-	game.load.image('ball', 'assets/harley.png');
-	game.load.image('ball', 'assets/joker.png');
-	game.load.image('ball', 'assets/MadLove.png');
+	game.load.image('harleyPic', 'assets/harley.png');
+	game.load.image('jokerPic', 'assets/joker.png');
+	game.load.image('madPic', 'assets/MadLove.png');
 
 	}
 
@@ -21,13 +21,19 @@ window.onload = function()
 	var launchVelocity = 0;
 	var Xvector;
 	var Yvector;
+	
 	var bg;
+	
+	var joker;
+	var harley;
+	var love;
 
 	function create() {
 
 		game.physics.startSystem(Phaser.Physics.ARCADE);
 		
 		bg = game.add.tileSprite(0, 0, 800, 600, 'city');
+		joker = game.add.tileSprite(0, 50, 'jokerPic');
 
 		// set global gravity
 		game.physics.arcade.gravity.y = 200;
@@ -36,16 +42,6 @@ window.onload = function()
 		var graphics = game.add.graphics(0,0);
 		graphics.beginFill(0x049e0c);
 		graphics.drawRect(395, 350, 10, 250);
-
-		//analog = game.add.sprite(400, 350, 'analog');
-
-		//game.physics.enable(analog, Phaser.Physics.ARCADE);
-
-		/*analog.body.allowGravity = false;
-		analog.width = 8;
-		analog.rotation = 220;
-		analog.alpha = 0;
-		analog.anchor.setTo(0.5, 0.0);*/
 		
 		arrow = game.add.sprite(400, 350, 'arrow');
 
@@ -101,6 +97,10 @@ window.onload = function()
 		ball.rotation += 50;
 		
 		reset(ball);
+		
+		joker.x += 5;
+		if(joker.x >= 800)
+			joker.reset(0,game.world.randomX);
 		
 		if (catchFlag == true)
 		{
