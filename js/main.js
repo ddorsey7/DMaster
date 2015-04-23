@@ -38,6 +38,8 @@ window.onload = function()
 		joker2 = game.add.sprite(700, 50, 'jokerPic');
 		harley = game.add.sprite(700, 150, 'harleyPic' );
 		love = game.add.sprite(0, 150, 'madPic');
+		
+		game.physics.enable([joker, joker2, love, harley], Phaser.Physics.ARCADE);
 
 		// set global gravity
 		game.physics.arcade.gravity.y = 200;
@@ -67,6 +69,8 @@ window.onload = function()
 		ball.input.start(0, true);
 		ball.events.onInputDown.add(set);
 		ball.events.onInputUp.add(launch);
+		
+		
 
 	}
 
@@ -108,10 +112,10 @@ window.onload = function()
 		moveLeft(joker2);
 		moveLeft(harley);
 		
-		game.physics.arcade.collide(ball, joker, hitRight, null, this);
-		game.physics.arcade.collide(ball, love, hitRight, null, this);
-		game.physics.arcade.collide(ball, joker2, hitLeft, null, this);
-		game.physics.arcade.collide(ball, harley, hitLeft, null, this);
+		game.physics.arcade.collide(ball, joker, 	hitRight, 	null, this);
+		game.physics.arcade.collide(ball, love, 	hitRight, 	null, this);
+		game.physics.arcade.collide(ball, joker2, 	hitLeft, 	null, this);
+		game.physics.arcade.collide(ball, harley, 	hitLeft, 	null, this);
 		
 		if (catchFlag == true)
 		{
@@ -156,20 +160,20 @@ window.onload = function()
 			card.reset(game.world.randomX, 50);
 	}
 	
-	function hitRight (bat, card) 
+	function hitRight (ball, card) 
 	{
 		card.kill();
-		bat.kill();
+		ball.kill();
 		card.reset(game.world.randomX, 150);
-		bat.reset(game.world.randomX, 590);
+		ball.reset(game.world.randomX, 590);
 	}
 	
-	function hitLeft (bat, card) 
+	function hitLeft (ball, card) 
 	{
 		card.kill();
-		bat.kill();
+		ball.kill();
 		card.reset(game.world.randomX, 50);
-		bat.reset(game.world.randomX, 590);
+		ball.reset(game.world.randomX, 590);
 	}
 	
 };
