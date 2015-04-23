@@ -33,9 +33,9 @@ window.onload = function()
 		game.physics.startSystem(Phaser.Physics.ARCADE);
 		
 		//bg = game.add.tileSprite(0, 0, 800, 600, 'city');
-		joker = game.add.sprite(0, 50, 'jokerPic');
-		harley = game.add.sprite(800, 100, 'harleyPic' );
-		love = game.add.sprite(0, 150, 'madPic');
+		joker = game.add.sprite(0, 0, 'jokerPic');
+		harley = game.add.sprite(750, 100, 'harleyPic' );
+		love = game.add.sprite(0, 100, 'madPic');
 
 		// set global gravity
 		game.physics.arcade.gravity.y = 200;
