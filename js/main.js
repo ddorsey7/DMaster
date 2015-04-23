@@ -69,7 +69,7 @@ window.onload = function()
 		ball.body.velocity.setTo(0, 0);
 		ball.body.allowGravity = false;
 		catchFlag = true;
-		heightLimit(ball);
+		
 
 	}
 
@@ -101,11 +101,9 @@ window.onload = function()
 			ball.x = game.input.activePointer.worldX;   
 			ball.y = game.input.activePointer.worldY;
 			
-			arrow.alpha = 1;    
-			/*analog.alpha = 0.5;
-			analog.rotation = arrow.rotation - 3.14 / 2;
-			analog.height = game.physics.arcade.distanceToPointer(arrow);  
-			launchVelocity = analog.height;*/
+			arrow.alpha = 1;
+			
+			heightLimit(ball);
 		}   
 
 	}
