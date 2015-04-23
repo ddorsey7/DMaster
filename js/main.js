@@ -92,6 +92,8 @@ window.onload = function()
 		
 		ball.rotation += 50;
 		
+		reset(ball);
+		
 		if (catchFlag == true)
 		{
 			//  Track the ball sprite to the mouse  
@@ -105,5 +107,14 @@ window.onload = function()
 			launchVelocity = analog.height;*/
 		}   
 
+	}
+	
+	function reset(bat) {
+		if(bat.y <= 50)
+		{
+			bat.kill();
+			bat.reset(game.world.randomX, 590);
+		}
+		
 	}
 };
