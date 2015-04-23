@@ -28,6 +28,16 @@ window.onload = function()
 	var joker2;
 	var harley;
 	var love;
+	
+	var score;
+	var scoreString = '';
+	var scoreText;
+	var stateText;
+	
+	var time;
+	var timeString="Time: ";
+	var timeText;
+	var startTime;
 
 	function create() {
 
@@ -38,6 +48,15 @@ window.onload = function()
 		joker2 = game.add.sprite(700, 50, 'jokerPic');
 		harley = game.add.sprite(700, 150, 'harleyPic' );
 		love = game.add.sprite(0, 150, 'madPic');
+		
+		//Timer
+		startTime=game.time.time;
+		time=0;
+		timeText = game.add.text(1100, 10, timeString + time, { font: '84px Arial', fill: '#fff' });
+		//  Text
+		stateText = game.add.text(game.world.centerX,game.world.centerY,' ', { font: '168px Arial', fill: '#fff' });
+		stateText.anchor.setTo(0.5, 0.5);
+		stateText.visible = false;
 		
 		game.physics.enable([joker, joker2, love, harley], Phaser.Physics.ARCADE);
 		joker.body.allowGravity = false;
