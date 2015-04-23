@@ -15,6 +15,8 @@ window.onload = function()
 	var ball;
 	var catchFlag = false;
 	var launchVelocity = 0;
+	var Xvector;
+	var Yvector;
 
 	function create() {
 
