@@ -25,6 +25,7 @@ window.onload = function()
 	var bg;
 	
 	var joker;
+	var joker2;
 	var harley;
 	var love;
 
@@ -32,7 +33,7 @@ window.onload = function()
 
 		game.physics.startSystem(Phaser.Physics.ARCADE);
 		
-		//bg = game.add.tileSprite(0, 0, 800, 600, 'city');
+		bg = game.add.tileSprite(0, 0, 800, 600, 'city');
 		joker = game.add.sprite(0, 150, 'jokerPic');
 		joker2 = game.add.sprite(700, 50, 'jokerPic');
 		harley = game.add.sprite(700, 150, 'harleyPic' );
