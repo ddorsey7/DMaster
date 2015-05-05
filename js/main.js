@@ -73,15 +73,16 @@ window.onload = function()
 		cards = game.add.group();
 		cards.enableBody = true;
 		cards.physicsBodyType = Phaser.Physics.ARCADE;
-		cards.body.collideWorldBounds = true;
-		cards.body.bounce.setTo(1, 1);
-		cards.body.velocity.x = 200;
+		
 		
 		for (var i = 0; i < 10; i++)
 		{
 			var c = cards.create(game.world.randomX, Math.random() * 700, 'jokerPic', game.rnd.integerInRange(0, 36));
 			//c.name = 'veg' + i;
 			c.body.immovable = true;
+			c.body.collideWorldBounds = true;
+			c.body.bounce.setTo(1, 1);
+			c.body.velocity.x = 200;
 		}
 
 		// set global gravity
