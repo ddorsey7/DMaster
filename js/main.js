@@ -75,7 +75,7 @@ window.onload = function()
 		cards.physicsBodyType = Phaser.Physics.ARCADE;
 		
 		var i=50;
-		for (var i = 0; i < 5; i++)
+		for (var i = 0; i < 10; i++)
 		{
 			var c = cards.create(game.world.randomX, i, 'jokerPic', game.rnd.integerInRange(0, 36));
 			i = i + 50;
@@ -158,6 +158,7 @@ window.onload = function()
 		moveLeft(harley);
 		
 		game.physics.arcade.collide(ball, cards, 	hitRight, 	null, this);
+		game.physics.arcade.collide(ball, joker, 	hitRight, 	null, this);
 		//game.physics.arcade.collide(ball, love, 	hitRight, 	null, this);
 		//game.physics.arcade.collide(ball, joker2, 	hitLeft, 	null, this);
 		game.physics.arcade.collide(ball, harley, 	hitLeft, 	null, this);
@@ -228,7 +229,7 @@ window.onload = function()
 	{
 		card.kill();
 		ball.kill();
-		card.reset(game.world.randomX, 50);
+		//card.reset(game.world.randomX, 50);
 		ball.reset(game.world.randomX, 1190);
 		
 		score += 20;
