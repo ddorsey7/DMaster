@@ -43,7 +43,7 @@ window.onload = function()
 
 		game.physics.startSystem(Phaser.Physics.ARCADE);
 		
-		game.world.setBounds(0, 0, 800, 3600);
+		game.world.setBounds(0, 0, 800, 1200);
 		bg = game.add.tileSprite(0, 0, 800, 3600, 'city');
 		joker = game.add.sprite(0, 150, 'jokerPic');
 		//joker2 = game.add.sprite(700, 50, 'jokerPic');
@@ -83,7 +83,7 @@ window.onload = function()
 		arrow.body.allowGravity = false;
 		arrow.alpha = 0;
 		
-		ball = game.add.sprite(100, 400, 'ball');
+		ball = game.add.sprite(100, 1190, 'ball');
 		game.physics.enable(ball, Phaser.Physics.ARCADE);
 		ball.anchor.setTo(0.5, 0.5);
 		ball.body.collideWorldBounds = true;
