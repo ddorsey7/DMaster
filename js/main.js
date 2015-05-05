@@ -152,7 +152,7 @@ window.onload = function()
 			
 			arrow.alpha = 1;
 			
-			heightLimit(ball);
+			//heightLimit(ball);
 		}   
 
 	}
