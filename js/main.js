@@ -112,10 +112,10 @@ window.onload = function()
 	function launch() {
 
 		catchFlag = false;
-		
 		ball.body.moves = true;
+		game.camera.follow(ball, Phaser.Camera.FOLLOW_TOPDOWN);
 		arrow.alpha = 0;
-		//analog.alpha = 0;
+		
 		Xvector = (arrow.x - ball.x) * 3;
 		Yvector = (arrow.y - ball.y) * 3;
 		ball.body.allowGravity = true;  
@@ -124,6 +124,8 @@ window.onload = function()
 	}
 
 	function update() {
+		
+		
 
 		arrow.rotation = game.physics.arcade.angleBetween(arrow, ball);
 		
