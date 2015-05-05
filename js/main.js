@@ -77,7 +77,7 @@ window.onload = function()
 		var i=50;
 		for (var i = 0; i < 10; i++)
 		{
-			var c = cards.create(game.world.randomX, i, 'jokerPic', game.rnd.integerInRange(0, 36));
+			var c = cards.create(game.world.randomX, i, 'jokerPic');
 			i = i + 50;
 			//c.name = 'veg' + i;
 			c.body.immovable = true;
