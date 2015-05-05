@@ -8,7 +8,7 @@ window.onload = function()
     //game.load.image('analog', 'assets/tests/fusia.png');
     game.load.image('arrow', 'assets/arrow.png');
     game.load.image('ball', 'assets/bat.png');
-	game.load.image('city', 'assets/city.png');
+	game.load.image('city', 'assets/signal.jpeg');
 	game.load.image('harleyPic', 'assets/harley.png');
 	game.load.image('jokerPic', 'assets/joker.png');
 	game.load.image('madPic', 'assets/MadLove.png');
@@ -62,7 +62,7 @@ window.onload = function()
 		// The score
 		score=0;
 		scoreString = 'Score : ';
-		scoreText = game.add.text(10, 10, scoreString + score, { font: '42px Arial', fill: '#fff' });
+		scoreText = game.add.text(10, 780, scoreString + score, { font: '42px Arial', fill: '#fff' });
 		
 		game.physics.enable([joker, harley], Phaser.Physics.ARCADE);
 		joker.body.allowGravity = false;
@@ -74,10 +74,11 @@ window.onload = function()
 		cards.enableBody = true;
 		cards.physicsBodyType = Phaser.Physics.ARCADE;
 		
-		
-		for (var i = 0; i < 10; i++)
+		int i=50;
+		for (var i = 0; i < 5; i++)
 		{
-			var c = cards.create(game.world.randomX, Math.random() * 700, 'jokerPic', game.rnd.integerInRange(0, 36));
+			var c = cards.create(game.world.randomX, i, 'jokerPic', game.rnd.integerInRange(0, 36));
+			i = i + 50;
 			//c.name = 'veg' + i;
 			c.body.immovable = true;
 			c.body.collideWorldBounds = true;
