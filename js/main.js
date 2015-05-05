@@ -129,7 +129,7 @@ window.onload = function()
 		
 		ball.rotation += 50;
 		
-		reset(ball);
+		//reset(ball);
 		
 		//moving cards
 		moveRight(joker);

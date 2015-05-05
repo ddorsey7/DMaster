@@ -102,16 +102,6 @@ window.onload = function()
 		music = game.add.audio('boden');
 		music.play();
 		
-		//cop code
-		//cop.anchor.setTo(0.5,0.5);//new code
-		//cop.body.collideWorldBounds = true;
-		//cop.body.allowRotation= false;//new code
-
-		//This gets it moving
-		//balls.setAll('body.collideWorldBounds', true);
-		//balls.setAll('body.bounce.x', 1);
-		//balls.setAll('body.bounce.y', 1);
-		//balls.setAll('body.minBounceVelocity', 0);
 	}
 
 	//Move the knocker with the arrow keys
@@ -181,9 +171,6 @@ window.onload = function()
 		if (ball.y > 1200)
 		{
 			ball.kill();
-			score -= 10;
-
-			scoreText.text = 'score: ' + score;
 		}
 
 	}
