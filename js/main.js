@@ -76,7 +76,7 @@ window.onload = function()
 		
 		for (var i = 0; i < 50; i++)
 		{
-			var c = cards.create(game.world.randomX, Math.random() * 1100, 'jokerPic', game.rnd.integerInRange(0, 36));
+			var c = cards.create(game.world.randomX, Math.random() * 900, 'jokerPic', game.rnd.integerInRange(0, 36));
 			//c.name = 'veg' + i;
 			c.body.immovable = true;
 		}
@@ -86,7 +86,7 @@ window.onload = function()
 		game.stage.backgroundColor = '#0072bc';
 		
 		
-		arrow = game.add.sprite(400, 700, 'arrow');
+		arrow = game.add.sprite(400, 1100, 'arrow');
 	
 		game.physics.enable(arrow, Phaser.Physics.ARCADE);
 		
