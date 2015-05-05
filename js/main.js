@@ -8,7 +8,7 @@ window.onload = function()
     //game.load.image('analog', 'assets/tests/fusia.png');
     game.load.image('arrow', 'assets/arrow.png');
     game.load.image('ball', 'assets/bat.png');
-	game.load.image('city', 'assets/city.jpg');
+	game.load.image('city', 'assets/city.png');
 	game.load.image('harleyPic', 'assets/harley.png');
 	game.load.image('jokerPic', 'assets/joker.png');
 	game.load.image('madPic', 'assets/MadLove.png');
@@ -28,7 +28,7 @@ window.onload = function()
 	var joker2;
 	var harley;
 	var love;
-	var card;
+	var cards;
 	
 	var score;
 	var scoreString = '';
