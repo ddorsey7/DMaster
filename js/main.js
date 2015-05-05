@@ -104,7 +104,7 @@ window.onload = function()
 		game.physics.enable(ball, Phaser.Physics.ARCADE);
 		ball.anchor.setTo(0.5, 0.5);
 		ball.body.collideWorldBounds = true;
-		ball.body.bounce.setTo(0.9, 0.9);
+		ball.body.bounce.setTo(0.1, 0.1);
 		
 		// Enable input.
 		ball.inputEnabled = true;
