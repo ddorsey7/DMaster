@@ -74,7 +74,7 @@ window.onload = function()
 		cards.enableBody = true;
 		cards.physicsBodyType = Phaser.Physics.ARCADE;
 		
-		int i=50;
+		var i=50;
 		for (var i = 0; i < 5; i++)
 		{
 			var c = cards.create(game.world.randomX, i, 'jokerPic', game.rnd.integerInRange(0, 36));
