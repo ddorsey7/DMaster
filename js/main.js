@@ -43,7 +43,8 @@ window.onload = function()
 
 		game.physics.startSystem(Phaser.Physics.ARCADE);
 		
-		bg = game.add.tileSprite(0, 0, 1600, 1200, 'city');
+		game.world.setBounds(0, 0, 800, 3600);
+		bg = game.add.tileSprite(0, 0, 800, 3600, 'city');
 		joker = game.add.sprite(0, 150, 'jokerPic');
 		//joker2 = game.add.sprite(700, 50, 'jokerPic');
 		harley = game.add.sprite(700, 150, 'harleyPic' );
