@@ -74,7 +74,7 @@ window.onload = function()
 		game.stage.backgroundColor = '#0072bc';
 		
 		
-		arrow = game.add.sprite(400, 350, 'arrow');
+		arrow = game.add.sprite(400, 700, 'arrow');
 
 		game.physics.enable(arrow, Phaser.Physics.ARCADE);
 
