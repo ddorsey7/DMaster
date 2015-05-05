@@ -28,6 +28,7 @@ window.onload = function()
 	var joker2;
 	var harley;
 	var love;
+	var card;
 	
 	var score;
 	var scoreString = '';
