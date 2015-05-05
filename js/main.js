@@ -73,6 +73,9 @@ window.onload = function()
 		cards = game.add.group();
 		cards.enableBody = true;
 		cards.physicsBodyType = Phaser.Physics.ARCADE;
+		cards.body.collideWorldBounds = true;
+		cards.body.bounce.setTo(1, 1);
+		cards.body.velocity.x = 200;
 		
 		for (var i = 0; i < 10; i++)
 		{
