@@ -8,7 +8,7 @@ window.onload = function()
     //game.load.image('analog', 'assets/tests/fusia.png');
     game.load.image('arrow', 'assets/arrow.png');
     game.load.image('ball', 'assets/bat.png');
-	game.load.image('city', 'assets/gotham.jpg');
+	game.load.image('city', 'assets/city.jpg');
 	game.load.image('harleyPic', 'assets/harley.png');
 	game.load.image('jokerPic', 'assets/joker.png');
 	game.load.image('madPic', 'assets/MadLove.png');
@@ -44,7 +44,7 @@ window.onload = function()
 		game.physics.startSystem(Phaser.Physics.ARCADE);
 		
 		game.world.setBounds(0, 0, 800, 1200);
-		bg = game.add.tileSprite(0, 0, 800, 3600, 'city');
+		bg = game.add.tileSprite(0, 0, 800, 1200, 'city');
 		joker = game.add.sprite(0, 150, 'jokerPic');
 		//joker2 = game.add.sprite(700, 50, 'jokerPic');
 		harley = game.add.sprite(700, 150, 'harleyPic' );
@@ -68,6 +68,17 @@ window.onload = function()
 		//joker2.body.allowGravity = false;
 		harley.body.allowGravity = false;
 		//love.body.allowGravity = false;
+		
+		cards = game.add.group();
+		cards.enableBody = true;
+		cards.physicsBodyType = Phaser.Physics.ARCADE;
+		
+		for (var i = 0; i < 50; i++)
+		{
+			var c = cards.create(game.world.randomX, Math.random() * 1100, 'jokerPic', game.rnd.integerInRange(0, 36));
+			//c.name = 'veg' + i;
+			c.body.immovable = true;
+		}
 
 		// set global gravity
 		game.physics.arcade.gravity.y = 200;
@@ -200,7 +211,7 @@ window.onload = function()
 		card.kill();
 		ball.kill();
 		card.reset(game.world.randomX, 150);
-		ball.reset(game.world.randomX, 590);
+		ball.reset(game.world.randomX, 1190);
 		
 		score += 20;
 
@@ -212,7 +223,7 @@ window.onload = function()
 		card.kill();
 		ball.kill();
 		card.reset(game.world.randomX, 50);
-		ball.reset(game.world.randomX, 590);
+		ball.reset(game.world.randomX, 1190);
 		
 		score += 20;
 
