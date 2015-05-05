@@ -82,14 +82,14 @@ window.onload = function()
 		}
 
 		// set global gravity
-		game.physics.arcade.gravity.y = 200;
+		game.physics.arcade.gravity.y = 0;
 		game.stage.backgroundColor = '#0072bc';
 		
 		
 		arrow = game.add.sprite(400, 700, 'arrow');
-
+	
 		game.physics.enable(arrow, Phaser.Physics.ARCADE);
-
+		
 		arrow.anchor.setTo(0.1, 0.5);
 		arrow.body.moves = false;
 		arrow.body.allowGravity = false;
@@ -152,7 +152,7 @@ window.onload = function()
 		//moveLeft(joker2);
 		moveLeft(harley);
 		
-		game.physics.arcade.collide(ball, joker, 	hitRight, 	null, this);
+		game.physics.arcade.collide(ball, cards, 	hitRight, 	null, this);
 		//game.physics.arcade.collide(ball, love, 	hitRight, 	null, this);
 		//game.physics.arcade.collide(ball, joker2, 	hitLeft, 	null, this);
 		game.physics.arcade.collide(ball, harley, 	hitLeft, 	null, this);
@@ -211,7 +211,7 @@ window.onload = function()
 	{
 		card.kill();
 		ball.kill();
-		card.reset(game.world.randomX, 150);
+		//card.reset(game.world.randomX, 150);
 		ball.reset(game.world.randomX, 1190);
 		
 		score += 20;
