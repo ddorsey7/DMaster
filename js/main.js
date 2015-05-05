@@ -74,7 +74,7 @@ window.onload = function()
 		cards.enableBody = true;
 		cards.physicsBodyType = Phaser.Physics.ARCADE;
 		
-		for (var i = 0; i < 50; i++)
+		for (var i = 0; i < 10; i++)
 		{
 			var c = cards.create(game.world.randomX, Math.random() * 900, 'jokerPic', game.rnd.integerInRange(0, 36));
 			//c.name = 'veg' + i;
@@ -86,7 +86,7 @@ window.onload = function()
 		game.stage.backgroundColor = '#0072bc';
 		
 		
-		arrow = game.add.sprite(400, 1100, 'arrow');
+		arrow = game.add.sprite(400, 800, 'arrow');
 	
 		game.physics.enable(arrow, Phaser.Physics.ARCADE);
 		
